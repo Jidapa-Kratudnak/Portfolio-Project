@@ -40,12 +40,13 @@ You can visit my resume here:
 
 โปรเจกต์นี้ใช้เทคโนโลยีหลักดังนี้:
 
-| ประเภท     | เทคโนโลยี      |
-| ---------- | -------------- |
-| Framework  | Next.js, React |
-| Language   | TypeScript     |
-| Styling    | Tailwind CSS   |
-| Deployment | Vercel         |
+| ประเภท     | เทคโนโลยี         |
+| ---------- | ----------------- |
+| Framework  | Next.js, React    |
+| Language   | TypeScript        |
+| Styling    | Tailwind CSS      |
+| UI Library | Ant Design (AntD) |
+| Deployment | Vercel            |
 
 ---
 
