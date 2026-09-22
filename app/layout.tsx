@@ -3,7 +3,7 @@ import { Prompt, Rubik } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jidapa | Portfolio",
+  title: "Jidapa | Resume&Portfolio",
   description: "Jidapa's personal resume and portfolio",
 };
 

@@ -1,127 +1,168 @@
-import { aboutMeData } from "@/modules/aboutMe/data/aboutMeData";
-import { Card } from "antd";
-import { Divider } from "antd";
-import { ContactRound, Mail, MapPin, Phone, UserRound } from "lucide-react";
+import { Card, Divider } from "antd";
+import {
+  ContactRound,
+  Mail,
+  MapPin,
+  Phone,
+  UserRound,
+} from "lucide-react";
 import Image from "next/image";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { AboutMeDataType } from "../types/aboutMeDataType";
 
-const AboutMeSection = () => {
-  const aboutMe = aboutMeData;
-
+const AboutMeSection = (aboutMeData: AboutMeDataType) => {
   return (
     <>
       <div className="flex flex-col items-center text-center">
-        <h1 className="text-[69px] font-bold mb-4 mt-20">About Me</h1>
+        <h1 className=" text-3xl font-bold sm:p-12 sm:text-4xl md:mt-16 md:text-5xl lg:mt-7 lg:text-6xl xl:text-[65px]">
+          เกี่ยวกับฉัน / About Me
+        </h1>
       </div>
 
-      <div className="flex flex-col items-center text-center p-10">
-        <Card className="justify-center items-center content-center rounded-[55px]! bg-[#F5F5DC] shadow-lg h-100%">
-          <div className="flex h-100% items-center justify-center">
-            <Image
-              src={aboutMe.profileImage}
-              alt="Jidapa Katudnak"
-              width={300}
-              height={300}
-              className="rounded-[50px]"
-            />
-          </div>
-        </Card>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
-        <Card
-          className="rounded-[40px]! shadow-lg sm:rounded-[50px]! md:col-span-1"
-          styles={{
-            body: {
-              padding: "28px",
-            },
-          }}
-        >
-          <div className="grid grid-cols-[minmax(120px,150px)_1fr] gap-x-4 gap-y-6 p-5 text-base sm:text-lg lg:text-[20px]">
-            <p className="flex items-center gap-2 font-medium">
-              <UserRound size={20} className="shrink-0" />
-              <span>ชื่อ-นามสกุล</span>
-            </p>
-
-            <p className="wrap-break-word">
-              {aboutMe.THfirstName} {aboutMe.THlastName}
-            </p>
-
-            <p className="flex items-center gap-2 font-medium">
-              <Phone size={20} className="shrink-0" />
-              <span>เบอร์โทรศัพท์</span>
-            </p>
-
-            <p className="wrap-break-word">{aboutMe.phone}</p>
-
-            <p className="flex items-center gap-2 font-medium">
-              <Mail size={20} className="shrink-0" />
-              <span>E-mail</span>
-            </p>
-
-            <p className="break-all">{aboutMe.email}</p>
-
-            <p className="flex items-center gap-2 font-medium">
-              <MapPin size={20} className="shrink-0" />
-              <span>ที่อยู่</span>
-            </p>
-
-            <p className="wrap-break-word">{aboutMe.address}</p>
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 py-6 sm:px-6 md:px-10 lg:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+          <div className="flex justify-center">
+            <Card
+              className="!w-full !max-w-[400px] !rounded-[40px] !shadow-lg sm:!rounded-[50px] md:!rounded-[55px]"
+              styles={{
+                body: {
+                  padding: "24px",
+                },
+              }}
+            >
+              <div className="flex items-center justify-center">
+                <Image
+                  src={aboutMeData.profileImage}
+                  alt="Jidapa Katudnak"
+                  width={300}
+                  height={300}
+                  className="h-auto w-full max-w-[300px] rounded-[40px] sm:rounded-[50px]"
+                />
+              </div>
+            </Card>
           </div>
 
-          <Divider className="mx-auto my-6 w-[80%]! border-t-[2px]! border-[#22231A]/20" />
+          <Card
+            className="flex! w-full! items-center! !justify-center !rounded-[40px] !shadow-lg sm:!rounded-[50px]"
+            styles={{
+              body: {
+                padding: "20px",
+              },
+            }}
+          >
+            <div className="space-y-5 p-2 sm:p-3 md:p-5">
+              <div className="flex items-start gap-3">
+                <UserRound size={21} className="mt-1 shrink-0" />
 
-          <div className="grid grid-cols-[minmax(120px,150px)_1fr] gap-x-4 p-5 text-base sm:text-lg lg:text-[20px]">
-            <p className="flex items-center gap-2 font-medium">
-              <ContactRound size={20} className="shrink-0" />
-              <span>อื่นๆ</span>
-            </p>
+                <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+                  <span className="shrink-0 sm:w-[110px] sm:font-medium md:w-[130px] lg:text-lg">
+                    ชื่อ-นามสกุล
+                  </span>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-4">
-  <a
-    href="https://github.com/katudnakJ?tab=repositories"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="GitHub Repositories"
-  >
-    <FaGithub
-      size={32}
-      className="cursor-pointer text-[#22251A]"
-    />
-  </a>
+                  <span className="wrap-break-word *:sm:font-medium lg:text-[20px]">
+                    {aboutMeData.THfirstName} {aboutMeData.THlastName}
+                  </span>
+                </div>
+              </div>
 
-  <a
-    href="https://github.com/Jidapa-Kratudnak"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="GitHub Profile"
-  >
-    <FaGithub
-      size={32}
-      className="cursor-pointer text-[#7b02d7]"
-    />
-  </a>
-</div>
+              <div className="flex items-start gap-3">
+                <Phone size={21} className="mt-1 shrink-0" />
 
+                <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+                  <span className="shrink-0 sm:w-[110px] sm:font-medium md:w-[130px] lg:text-[20px]">
+                    เบอร์โทรศัพท์
+                  </span>
+
+                  <span className="wrap-break-word *:sm:font-medium lg:text-lg">
+                    {aboutMeData.phone}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Mail size={21} className="mt-1 shrink-0" />
+
+                <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+                  <span className="shrink-0 sm:w-[110px] sm:font-medium md:w-[130px] lg:text-[20px]">
+                    E-mail
+                  </span>
+
+                  <span className="break-all *:sm:font-medium lg:text-[20px]">
+                    {aboutMeData.email}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <MapPin size={21} className="mt-1 shrink-0" />
+
+                <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+                  <span className="shrink-0 *:sm:font-medium sm:w-[110px] md:w-[130px] lg:text-[20px]">
+                    ที่อยู่
+                  </span>
+
+                  <span className="wrap-break-word *:sm:font-medium lg:text-[20px]">
+                    {aboutMeData.address}
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </Card>
+
+            <Divider className="!mx-auto !my-6 !w-[80%] !border-t-[2px] !border-[#22231A]/20" />
+
+            <div className="flex flex-col gap-3 p-2 text-base sm:grid sm:grid-cols-[minmax(110px,150px)_1fr] sm:gap-x-4 sm:p-5 sm:text-lg lg:text-[20px]">
+              <p className="flex items-center gap-2 sm:font-medium lg:text-[20px]">
+                <ContactRound size={20} className="shrink-0" />
+                <span>อื่นๆ</span>
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="https://github.com/katudnakJ?tab=repositories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Repositories"
+                >
+                  <FaGithub
+                    size={32}
+                    className="cursor-pointer text-[#22251A]"
+                  />
+                </a>
+
+                <a
+                  href="https://github.com/Jidapa-Kratudnak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                >
+                  <FaGithub
+                    size={32}
+                    className="cursor-pointer text-[#7b02d7]"
+                  />
+                </a>
+              </div>
+            </div>
+          </Card>
+        </div>
 
         <Card
-          className="rounded-[40px]! shadow-lg! sm:rounded-[50px]! md:col-span-2"
+          className="!w-full !rounded-[40px] !shadow-lg sm:!rounded-[50px]"
           styles={{
             body: {
-              padding: "28px",
+              padding: "20px",
             },
           }}
         >
-          <div className="text-base leading-8 sm:text-lg lg:p-4 lg:text-[22px]">
-            <p className="indent-8">{aboutMe.THaboutMe}</p>
+          <div className="text-base leading-7 sm:text-lg sm:leading-8 md:p-4 lg:text-[22px]">
+            <p className="indent-8">
+              {aboutMeData.THaboutMe}
+            </p>
 
-            <Divider className="mx-auto my-6 w-[80%]! border-t-[2px]!" />
+            <Divider className="!mx-auto !my-6 !w-[80%] !border-t-[2px]" />
 
-            <p className="leading-8">{aboutMe.ENaboutMe}</p>
+            <p className="leading-7 sm:leading-8">
+              {aboutMeData.ENaboutMe}
+            </p>
           </div>
         </Card>
       </div>

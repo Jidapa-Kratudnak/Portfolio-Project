@@ -1,6 +1,6 @@
-import { AboutMe } from "../types/aboutMe";
+import { AboutMeDataType } from "../types/aboutMeDataType";
 
-export const aboutMeData: AboutMe = {
+export const aboutMeData: AboutMeDataType = {
     profileImage: "/images/imageTest.jpeg",
     THfirstName: "จิดาภา",
     THlastName: "กระตุดนาค",

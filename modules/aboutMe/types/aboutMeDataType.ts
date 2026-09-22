@@ -1,4 +1,4 @@
-export type AboutMe = {
+export type AboutMeDataType = {
     profileImage: string;
     THfirstName: string;
     THlastName: string;

@@ -6,17 +6,19 @@ import { useState } from "react";
 
 interface GradientButtonProps extends ButtonProps {
   children: React.ReactNode;
-  width?: number | 200;
-  height?: number | 50;
-  fontSize?: number | 16;
+  width?: number | string;
+  height?: number | string;
+  fontSize?: number | string;
 }
 
 export default function GradientButton({
   children,
+  width = 200,
+  height = 50,
+  fontSize = 16,
   ...props
 }: GradientButtonProps) {
   const [hovered, setHovered] = useState(false);
-  const { width, height, fontSize } = props;
 
   return (
     <Button
@@ -36,9 +38,9 @@ export default function GradientButton({
         background: hovered
           ? "#734e30"
           : "linear-gradient(135deg, #734e30, #464831)",
-          width: width,
-          height: height,
-          fontSize: fontSize,
+        width,
+        height,
+        fontSize,
         ...props.style,
       }}
     >
