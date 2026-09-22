@@ -1,9 +1,9 @@
-# 👋 My Personal Resume | เรซูเม่ส่วนตัวของฉัน
+# 👋 My Personal Portfolio | เรซูเม่ส่วนตัวของฉัน
 
-สวัสดีค่ะ! โปรเจกต์นี้เป็นเว็บไซต์ Resume และ Portfolio ส่วนตัวของดิฉัน
+สวัสดีค่ะ! โปรเจกต์นี้เป็นเว็บไซต์ Portfolio ส่วนตัวของดิฉัน
 ดิฉันสร้างเว็บไซต์นี้ขึ้นมาเพื่อแนะนำตัวเอง และรวบรวมข้อมูลเกี่ยวกับประสบการณ์ ทักษะ และโปรเจกต์ต่าง ๆ ที่เคยทำไว้ในที่เดียว
 
-Hello! This is my personal resume and portfolio website.
+Hello! This is my Personal Portfolio website.
 I created this project to introduce myself and share my experience, skills, and projects in one place.
 
 ---
@@ -11,9 +11,9 @@ I created this project to introduce myself and share my experience, skills, and 
 ## 🌐 Website | เว็บไซต์
 
 สามารถเข้าชมเว็บไซต์ได้ที่:
-You can visit my resume here:
+You can visit my portfolio here:
 
-**[🔗 View My Resume](https://Demo.com)**
+**[🔗 View My portfolio](https://Demo.com)**
 
 ---
 
@@ -55,13 +55,13 @@ You can visit my resume here:
 Clone โปรเจกต์:
 
 ```bash
-git clone git@github.com:Jidapa-Kratudnak/Resume-Project.git
+git clone git@github.com:Jidapa-Kratudnak/Portfolio-Project.git
 ```
 
 เข้าไปที่โฟลเดอร์โปรเจกต์:
 
 ```bash
-cd resume-project
+cd portfolio-project
 ```
 
 ติดตั้ง dependencies:
@@ -92,10 +92,10 @@ http://localhost:3000
 
 ## 📫 Contact | ติดต่อ
 
-หากต้องการติดต่อหรือดูข้อมูลเพิ่มเติม สามารถดูช่องทางการติดต่อได้จากเว็บไซต์ Resume ของดิฉัน
+หากต้องการติดต่อหรือดูข้อมูลเพิ่มเติม สามารถดูช่องทางการติดต่อได้จากเว็บไซต์ portfolio ของดิฉัน
 
 If you would like to contact me or learn more about my work,
-please visit my resume website.
+please visit my portfolio website.
 
 ---
 
