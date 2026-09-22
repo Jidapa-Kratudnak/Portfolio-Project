@@ -55,7 +55,7 @@ You can visit my portfolio here:
 Clone โปรเจกต์:
 
 ```bash
-git clone git@github.com:Jidapa-Kratudnak/portfolio-Project.git
+git clone git@github.com:Jidapa-Kratudnak/Portfolio-Project.git
 ```
 
 เข้าไปที่โฟลเดอร์โปรเจกต์:
