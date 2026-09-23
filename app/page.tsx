@@ -6,9 +6,11 @@ import { Divider } from "antd";
 import { aboutMeData } from "@/modules/aboutMe/data/aboutMeData";
 import Educations from "@/modules/educations/components/educations";
 import { educationData } from "@/modules/educations/data/educationsData";
+import ProjectExp from "@/modules/projectExp/components/projectExp";
+import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
+
 
 export default function Home() {
-
   return (
     <>
       <Header />
@@ -18,12 +20,13 @@ export default function Home() {
           <Welcome />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-
           <AboutMeSection {...aboutMeData} />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-
           <Educations {...educationData} />
+
+          <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+          <ProjectExp {...ProjectExpData} />
         </div>
       </main>
 
