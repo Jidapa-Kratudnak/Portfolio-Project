@@ -8,6 +8,7 @@ import Educations from "@/modules/educations/components/educations";
 import { educationData } from "@/modules/educations/data/educationsData";
 import ProjectExp from "@/modules/projectExp/components/projectExp";
 import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
+import Activities from "@/modules/activities/components/activities";
 
 
 export default function Home() {
@@ -27,6 +28,10 @@ export default function Home() {
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
           <ProjectExp {...ProjectExpData} />
+
+          <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+          <Activities />
+          
         </div>
       </main>
 

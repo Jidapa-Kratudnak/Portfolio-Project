@@ -17,7 +17,8 @@ const AboutMeSection = (aboutMeData: AboutMeDataType) => {
           </h1>
           <div className="mt-4 h-1 w-20 rounded-full bg-linear-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
         </div>
-        <div className="mx-auto mt-10 w-full max-w-5xl sm:mt-14">
+        
+        <div className="mx-auto mt-10 w-full sm:mt-14 items-center justify-center">
           <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 py-6 sm:px-6 md:px-10 lg:gap-8">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
               <div className="flex justify-center">
