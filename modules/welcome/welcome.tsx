@@ -1,4 +1,6 @@
-import GradientButton from "@/components/gradientButton";
+'use client'
+
+import { Button } from "antd";
 import { ChevronsDown } from "lucide-react";
 
 const Welcome = () => {
@@ -12,15 +14,22 @@ const Welcome = () => {
         ยินดีต้อนรับเข้าสู่พอร์ตโฟลิโอของฉัน!
       </h1>
 
-      <GradientButton
-        width="clamp(260px, 60vw, 400px)"
-        height="clamp(65px, 10vw, 100px)"
-        fontSize="clamp(20px, 4vw, 36px)"
-        className="m-6 sm:m-8 md:m-10"
+     <Button
+        type="primary"
+        shape="round"
+        className="m-6! h-auto! w-auto! border-[#6c5846]! bg-[#6c5846]! px-8! py-4! text-lg! text-white! transition-all duration-200 hover:-translate-y-1 hover:!border-[#6c5846] hover:!bg-white hover:!text-[#6c5846] sm:m-8! sm:px-10! sm:py-5! sm:text-xl! md:m-10! md:px-12! md:py-6! md:text-2xl!"
+        onClick={() => {
+          document.getElementById("about")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }}
       >
-        Explore My Work
-        <ChevronsDown className="ml-2 h-6 w-6 sm:ml-3 sm:h-7 sm:w-7 md:h-9 md:w-9" />
-      </GradientButton>
+        <span className="flex items-center">
+          Explore My Work
+          <ChevronsDown className="ml-2 h-6 w-6 sm:ml-3 sm:h-7 sm:w-7 md:h-9 md:w-9" />
+        </span>
+      </Button>
     </div>
   );
 };

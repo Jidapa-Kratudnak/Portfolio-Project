@@ -1,14 +1,12 @@
 "use client";
 
 import { Button, Card, ConfigProvider, Timeline } from "antd";
-import { Award, Building2, CalendarDays, MapPin } from "lucide-react";
+import { Award, BriefcaseBusiness, Building2, CalendarDays, MapPin } from "lucide-react";
 import { ExperienceData } from "../types/experienceDataType";
 
 type ExperienceCardProps = {
   experienceData: ExperienceData[];
 };
-
-
 
 const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
   return (
@@ -30,7 +28,7 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
           items={[
             ...experienceData.map((experience) => ({
               color: "#6c5846",
-              children: (
+              content: (
                 <Card
                   className="mb-4! rounded-3xl! border-0! shadow-md! transition-all duration-300 hover:-translate-y-1 hover:shadow-xl! sm:mb-6! sm:rounded-[30px]!"
                   styles={{
@@ -58,20 +56,23 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                           {experience.company}
                         </h2>
 
-                        <p className="mt-2 text-base font-medium text-[#6c5846] sm:text-lg">
-                          {experience.position}
+                        <p className="mt-2 flex items-center gap-2 font-medium text-[#6c5846] sm:text-lg">
+                          <MapPin size={18} className="shrink-0" />
+                          <span className="wrap-break-word">
+                            {experience.location}
+                          </span>
+                        </p>
+                        <p className="mt-2 flex items-center gap-2 font-medium text-[#6c5846] sm:text-lg">
+                          <BriefcaseBusiness size={18} className="shrink-0" />
+                          <span className="wrap-break-word">
+                            {experience.position}
+                          </span>
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-4 flex items-center gap-2 text-sm text-slate-500 sm:text-base">
-                      <MapPin size={18} className="shrink-0" />
-
-                      <span>สำนักงานใหญ่</span>
-                    </div>
-
                     <div className="mt-5 sm:mt-6">
-                      <ul className="space-y-2 text-sm leading-7 text-slate-600 sm:space-y-3 sm:text-base lg:text-lg">
+                      <ul className="space-y-2 text-sm leading-7 text-slate-600 sm:space-y-3 sm:text-base lg:text-[20px]">
                         {experience.description.map((description, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6c5846]" />
@@ -88,7 +89,6 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                       <Button
                         type="default"
                         icon={<Award size={18} />}
-                        href="#"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="h-auto! w-full! rounded-full! border-[#6c5846]! bg-[#6c5846]! px-5! py-2.5! text-white! transition-all duration-200 hover:-translate-y-1  hover:*:text-[#6c5846] hover:*:border-[#6c5846] hover:bg-white! sm:w-auto!"
@@ -101,15 +101,15 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
               ),
             })),
             {
-              dot: (
+              icon: (
                 <div className="flex h-5 w-5 items-center justify-center">
                   <div className="h-4 w-4 animate-spin rounded-full border-2 border-[#6c5846]/20 border-t-[#6c5846]" />
                 </div>
               ),
 
-              children: (
+              content: (
                 <div className="py-2 text-sm font-medium text-slate-500">
-                 ยังไม่มีประสบการณ์เพิ่มเติมในขณะนี้...
+                  ยังไม่มีประสบการณ์เพิ่มเติมในขณะนี้...
                 </div>
               ),
             },

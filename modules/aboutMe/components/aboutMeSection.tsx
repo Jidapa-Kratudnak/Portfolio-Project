@@ -27,7 +27,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
               <div className="flex justify-center">
                 <Card
-                  className="w-full! max-w-100! rounded-[40px]! shadow-lg! sm:!rounded-[50px] md:!rounded-[55px]"
+                  className="w-full! max-w-100! rounded-[40px]! shadow-lg! sm:rounded-[50px]! md:rounded-[55px]!"
                   styles={{
                     body: {
                       padding: "24px",
@@ -40,14 +40,14 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                       alt="Jidapa Katudnak"
                       width={300}
                       height={300}
-                      className="h-auto w-full max-w-[300px] rounded-[40px] sm:rounded-[50px]"
+                      className="h-auto w-full max-w-75 rounded-[40px] sm:rounded-[50px]"
                     />
                   </div>
                 </Card>
               </div>
 
               <Card
-                className="flex! w-full! items-center! !justify-center !rounded-[40px] !shadow-lg sm:!rounded-[50px]"
+                className="flex! w-full! items-center! justify-center! rounded-[40px]! shadow-lg! sm:rounded-[50px]!"
                 styles={{
                   body: {
                     padding: "20px",
@@ -59,7 +59,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <UserRound size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 sm:w-[110px] sm:font-medium md:w-[130px] lg:text-lg">
+                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-[20px]">
                         ชื่อ-นามสกุล
                       </span>
 
@@ -73,11 +73,11 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <Phone size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 sm:w-[110px] sm:font-medium md:w-[130px] lg:text-[20px]">
+                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-[20px]">
                         เบอร์โทรศัพท์
                       </span>
 
-                      <span className="wrap-break-word *:sm:font-medium lg:text-lg">
+                      <span className="wrap-break-word *:sm:font-medium lg:text-[20px]">
                         {aboutMeData.phone}
                       </span>
                     </div>
@@ -87,7 +87,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <Mail size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 sm:w-[110px] sm:font-medium md:w-[130px] lg:text-[20px]">
+                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-[20px]">
                         E-mail
                       </span>
 
@@ -101,7 +101,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <MapPin size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 *:sm:font-medium sm:w-[110px] md:w-[130px] lg:text-[20px]">
+                      <span className="shrink-0 *:sm:font-medium sm:w-27.5 md:w-32.5 lg:text-[20px]">
                         ที่อยู่
                       </span>
 
@@ -112,7 +112,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                   </div>
                 </div>
 
-                <Divider className="!mx-auto !my-6 !w-[80%] !border-t-[2px] !border-[#22231A]/20" />
+                <Divider className="mx-auto! my-6! w-[80%]! border-t-2! border-[#22231A]/20!" />
 
                 <div className="flex flex-col gap-3 p-2 text-base sm:grid sm:grid-cols-[minmax(110px,150px)_1fr] sm:gap-x-4 sm:p-5 sm:text-lg lg:text-[20px]">
                   <p className="flex items-center gap-2 sm:font-medium lg:text-[20px]">

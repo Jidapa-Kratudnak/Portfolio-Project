@@ -10,3 +10,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-prompt), sans-serif;
 }
+
+/* Header Anchor Override Colors */
+.header-anchor {
+  --ant-color-primary: #6c5846;
+  --ant-anchor-link-active-color: #6c5846;
+}
+
+.header-anchor-mobile {
+  --ant-color-primary: #ffffff;
+  --ant-anchor-link-active-color: #ffffff;
+}

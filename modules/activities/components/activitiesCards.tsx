@@ -318,7 +318,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                 </h2>
 
                 <div>
-                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base lg:text-lg">
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[20px]">
                     {activity.activityDescription
                       .split("\n")
                       .map((desc, index) => (
