@@ -9,9 +9,11 @@ import { educationData } from "@/modules/educations/data/educationsData";
 import ProjectExpSection from "@/modules/projectExp/components/projectExpSection";
 import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
 import ActivitiesSection from "@/modules/activities/components/activitiesSection";
-import Skills from "@/modules/skills/components/skillsSection";
 import { activitiesData } from "@/modules/activities/data/activitiesDataSection";
 import { skillsData } from "@/modules/skills/data/skillsData";
+import SkillsSection from "@/modules/skills/components/skillsSection";
+import { experienceData } from "@/modules/experience/data/experienceData";
+import ExperienceSection from "@/modules/experience/components/experienceSection";
 
 export default function Home() {
   return (
@@ -35,7 +37,12 @@ export default function Home() {
           <ActivitiesSection activitiesData={activitiesData} />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-          <Skills skillsData={skillsData} />
+          <SkillsSection skillsData={skillsData} />
+
+          <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+          <ExperienceSection experienceData={experienceData} />
+
+          
         </div>
       </main>
 

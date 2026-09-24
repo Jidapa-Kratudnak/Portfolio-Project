@@ -27,7 +27,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
               <div className="flex justify-center">
                 <Card
-                  className="w-full! !max-w-[400px] rounded-[40px]! !shadow-lg sm:!rounded-[50px] md:!rounded-[55px]"
+                  className="w-full! max-w-100! rounded-[40px]! shadow-lg! sm:!rounded-[50px] md:!rounded-[55px]"
                   styles={{
                     body: {
                       padding: "24px",
