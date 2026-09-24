@@ -4,7 +4,11 @@ import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { AboutMeDataType } from "../types/aboutMeDataType";
 
-const AboutMeSection = (aboutMeData: AboutMeDataType) => {
+type AboutMeProps = {
+  aboutMeData: AboutMeDataType;
+};
+
+const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
   return (
     <>
       <section className="w-full bg-linear-to-b  px-4 py-12 sm:py-16">

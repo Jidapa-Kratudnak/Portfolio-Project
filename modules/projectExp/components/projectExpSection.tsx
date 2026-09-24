@@ -2,7 +2,11 @@ import ProjectExpCard from "./projectRxpCard";
 import { ProjectExpData } from "../data/projectExpData";
 import { ProjectExpDataType } from "../types/projectExpDataType";
 
-const ProjectExp = (projectExpData : ProjectExpDataType[]) => {
+type ProjectExpProps = {
+  projectExpData: ProjectExpDataType[];
+};
+
+const ProjectExpSection = ({projectExpData} : ProjectExpProps) => {
   return (
     <>
       <section className="w-full bg-gradient-to-b  px-4 py-12 sm:py-16">
@@ -24,4 +28,4 @@ const ProjectExp = (projectExpData : ProjectExpDataType[]) => {
   );
 };
 
-export default ProjectExp;
+export default ProjectExpSection;

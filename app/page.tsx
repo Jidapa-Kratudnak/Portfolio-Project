@@ -4,12 +4,13 @@ import AboutMeSection from "@/modules/aboutMe/components/aboutMe";
 import Welcome from "@/modules/welcome/welcome";
 import { Divider } from "antd";
 import { aboutMeData } from "@/modules/aboutMe/data/aboutMeData";
-import Educations from "@/modules/educations/components/educations";
+import EducationsSection from "@/modules/educations/components/educations";
 import { educationData } from "@/modules/educations/data/educationsData";
-import ProjectExp from "@/modules/projectExp/components/projectExp";
+import ProjectExpSection from "@/modules/projectExp/components/projectExp";
 import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
-import Activities from "@/modules/activities/components/activities";
-
+import ActivitiesSection from "@/modules/activities/components/activities";
+import Skills from "@/modules/skills/components/skills";
+import { activitiesData } from "@/modules/activities/data/activitiesData";
 
 export default function Home() {
   return (
@@ -21,17 +22,19 @@ export default function Home() {
           <Welcome />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-          <AboutMeSection {...aboutMeData} />
+          <AboutMeSection aboutMeData={aboutMeData} />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-          <Educations {...educationData} />
+          <EducationsSection educationData={educationData} />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-          <ProjectExp {...ProjectExpData} />
+          <ProjectExpSection projectExpData={ProjectExpData} />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-          <Activities />
-          
+          <ActivitiesSection activitiesData={activitiesData} />
+
+          <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+          <Skills />
         </div>
       </main>
 

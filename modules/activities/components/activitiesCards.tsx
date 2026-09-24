@@ -3,11 +3,13 @@
 import { Card } from "antd";
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 import Image from "next/image";
-import { activitiesData } from "../data/activitiesData";
+import { ActivitiesDataType } from "../type/activitiesDataType";
 
 const SWIPE_THRESHOLD = 40;
-
-const ActivitiesCards = () => {
+type ActivitiesCardsProps = {
+  activitiesData: ActivitiesDataType[];
+};
+const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
   const [currentImage, setCurrentImage] = useState<Record<string, number>>(
     {},
   );

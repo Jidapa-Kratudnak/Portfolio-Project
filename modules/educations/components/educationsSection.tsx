@@ -2,7 +2,11 @@ import { Card } from "antd";
 import { EducationsDataType } from "../types/educationsData";
 import Image from "next/image";
 
-const Educations = (educationData: EducationsDataType) => {
+type EducationsProps = {
+  educationData: EducationsDataType;
+};
+
+const EducationsSection = ({ educationData }: EducationsProps) => {
   const data = educationData.educationList[0];
 
   return (
@@ -104,4 +108,4 @@ const Educations = (educationData: EducationsDataType) => {
   );
 };
 
-export default Educations;
+export default EducationsSection;

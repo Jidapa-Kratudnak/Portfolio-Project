@@ -1,7 +1,12 @@
-import { Card } from "antd";
+
+import { ActivitiesDataType } from "../type/activitiesDataType";
 import ActivitiesCards from "./activitiesCards";
 
-const Activities = () => {
+type ActivitiesProps = {
+  activitiesData: ActivitiesDataType[];
+};
+
+const ActivitiesSection = ({ activitiesData }: ActivitiesProps) => {
   return (
     <>
       <section className="w-full bg-gradient-to-b  px-4 py-12 sm:py-16">
@@ -15,11 +20,11 @@ const Activities = () => {
           <div className="mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
         </div>
          <div className="mx-auto mt-10 w-full max-w-5xl sm:mt-14">
-          <ActivitiesCards />
+          <ActivitiesCards activitiesData={activitiesData} />
         </div>
       </section>
     </>
   );
 };
 
-export default Activities;
+export default ActivitiesSection;
