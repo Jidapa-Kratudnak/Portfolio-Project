@@ -11,6 +11,7 @@ import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
 import ActivitiesSection from "@/modules/activities/components/activitiesSection";
 import Skills from "@/modules/skills/components/skillsSection";
 import { activitiesData } from "@/modules/activities/data/activitiesDataSection";
+import { skillsData } from "@/modules/skills/data/skillsData";
 
 export default function Home() {
   return (
@@ -34,7 +35,7 @@ export default function Home() {
           <ActivitiesSection activitiesData={activitiesData} />
 
           <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-          <Skills />
+          <Skills skillsData={skillsData} />
         </div>
       </main>
 
