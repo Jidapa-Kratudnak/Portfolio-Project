@@ -4,18 +4,24 @@ import { Card } from "antd";
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 import Image from "next/image";
 import { ActivitiesDataType } from "../type/activitiesDataType";
+import dayjs from "dayjs";
+import "dayjs/locale/th";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+import { ImageOff } from "lucide-react";
+
+dayjs.extend(buddhistEra);
 
 const SWIPE_THRESHOLD = 40;
+dayjs.locale("th");
 type ActivitiesCardsProps = {
   activitiesData: ActivitiesDataType[];
 };
 const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
-  const [currentImage, setCurrentImage] = useState<Record<string, number>>(
-    {},
-  );
+  const [currentImage, setCurrentImage] = useState<Record<string, number>>({});
   const [slideDirection, setSlideDirection] = useState<
     Record<string, "left" | "right">
   >({});
+
   const [zoomedKey, setZoomedKey] = useState<string | null>(null);
 
   const touchStartX = useRef<number | null>(null);
@@ -60,8 +66,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
 
     setCurrentImage((prev) => ({
       ...prev,
-      [activityKey]:
-        ((prev[activityKey] ?? 0) - 1 + totalImages) % totalImages,
+      [activityKey]: ((prev[activityKey] ?? 0) - 1 + totalImages) % totalImages,
     }));
   };
 
@@ -94,8 +99,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
   ) => {
     if (touchStartX.current === null || totalImages <= 1) return;
 
-    const deltaX =
-      event.changedTouches[0].clientX - touchStartX.current;
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
 
     if (deltaX > SWIPE_THRESHOLD) {
       previousImage(activityKey, totalImages);
@@ -237,10 +241,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                       <button
                         type="button"
                         onClick={() =>
-                          nextImage(
-                            activityKey,
-                            activity.activityImage.length,
-                          )
+                          nextImage(activityKey, activity.activityImage.length)
                         }
                         aria-label="Next image"
                         className="
@@ -281,11 +282,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                             key={index}
                             type="button"
                             onClick={() =>
-                              goToImage(
-                                activityKey,
-                                index,
-                                imageIndex,
-                              )
+                              goToImage(activityKey, index, imageIndex)
                             }
                             aria-label={`Go to image ${index + 1}`}
                             className={`
@@ -305,14 +302,35 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                   </>
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">
-                    <span className="text-slate-500">
-                      No Image Available
+                    <span className="flex flex-col items-center justify-center gap-2 text-slate-500">
+                      <ImageOff className="h-8 w-8" />
+                      <span>ไม่มีรูปที่จะแสดง</span>
                     </span>
                   </div>
                 )}
               </div>
 
-              <div className="flex min-h-0 flex-col justify-center gap-3 p-6 sm:gap-4 sm:p-8 lg:p-10">
+              <div className="relative flex min-h-0 flex-col justify-center gap-3 p-6 pt-16 sm:gap-4 sm:p-8 sm:pt-16 lg:p-10 lg:pt-16">
+                <span className="absolute right-6 top-6 text-sm font-medium text-[#6c5846] sm:right-8 sm:top-8 sm:text-base lg:right-10 lg:top-10">
+                  {activity.activityStartDate ? (
+                    <>
+                      {dayjs(activity.activityStartDate)
+                        .locale("th")
+                        .format("D MMMM BBBB")}
+
+                      {activity.activityEndDate && (
+                        <>
+                          {" - "}
+                          {dayjs(activity.activityEndDate)
+                            .locale("th")
+                            .format("D MMMM BBBB")}
+                        </>
+                      )}
+                    </>
+                  ) : (
+                    "ยังไม่ระบุวันที่"
+                  )}
+                </span>
                 <h2 className="text-xl font-bold leading-snug text-slate-800 sm:text-2xl lg:text-3xl">
                   {activity.activityName}
                 </h2>
@@ -342,10 +360,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
               `${activity.activityName}-${index}` === zoomedKey,
           );
 
-          if (
-            !activity ||
-            activity.activityImage.length === 0
-          ) {
+          if (!activity || activity.activityImage.length === 0) {
             return null;
           }
 
@@ -370,82 +385,64 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                 className="relative flex h-full max-h-[85vh] w-full max-w-4xl items-center justify-center"
                 onClick={(event) => event.stopPropagation()}
                 onTouchStart={handleTouchStart}
-                onTouchEnd={(event) =>
-                  handleTouchEnd(
-                    event,
-                    zoomedKey,
-                    total,
-                  )
-                }
+                onTouchEnd={(event) => handleTouchEnd(event, zoomedKey, total)}
               >
-                <Image
-                  src={activity.activityImage[imageIndex]}
-                  alt={`${activity.activityName} ${imageIndex + 1}`}
-                  width={1200}
-                  height={900}
-                  sizes="90vw"
-                  className="max-h-[85vh] w-auto max-w-full object-contain"
-                  priority={false}
-                />
+                {activity.activityImage.length === 0 ||
+                activity.activityImage[0] === null ? (
+                  <div className="flex h-full w-full items-center justify-center">
+                    <ImageOff size={48} className="text-white" />
+                    <span className="ml-2 text-white">
+                      ไม่มีรูปภาพที่จะแสดง
+                    </span>
+                  </div>
+                ) : (
+                  <Image
+                    src={activity.activityImage[imageIndex]}
+                    alt={`${activity.activityName} ${imageIndex + 1}`}
+                    width={1200}
+                    height={900}
+                    sizes="90vw"
+                    className="max-h-[85vh] w-auto max-w-full object-contain"
+                    priority={false}
+                  />
+                )}
 
                 {total > 1 && (
                   <>
                     <button
                       type="button"
-                      onClick={() =>
-                        previousImage(
-                          zoomedKey,
-                          total,
-                        )
-                      }
+                      onClick={() => previousImage(zoomedKey, total)}
                       aria-label="Previous image"
                       className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:bg-white sm:left-4"
                     >
-                      <span className="text-2xl leading-none">
-                        ‹
-                      </span>
+                      <span className="text-2xl leading-none">‹</span>
                     </button>
 
                     <button
                       type="button"
-                      onClick={() =>
-                        nextImage(
-                          zoomedKey,
-                          total,
-                        )
-                      }
+                      onClick={() => nextImage(zoomedKey, total)}
                       aria-label="Next image"
                       className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:bg-white sm:right-4"
                     >
-                      <span className="text-2xl leading-none">
-                        ›
-                      </span>
+                      <span className="text-2xl leading-none">›</span>
                     </button>
 
                     <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5">
-                      {activity.activityImage.map(
-                        (_, index) => (
-                          <button
-                            key={index}
-                            type="button"
-                            onClick={() =>
-                              goToImage(
-                                zoomedKey,
-                                index,
-                                imageIndex,
-                              )
-                            }
-                            aria-label={`Go to image ${
-                              index + 1
-                            }`}
-                            className={`rounded-full transition-all duration-200 ${
-                              imageIndex === index
-                                ? "h-2 w-6 bg-black"
-                                : "h-2 w-2 bg-black/40 hover:bg-black/70"
-                            }`}
-                          />
-                        ),
-                      )}
+                      {activity.activityImage.map((_, index) => (
+                        <button
+                          key={index}
+                          type="button"
+                          onClick={() =>
+                            goToImage(zoomedKey, index, imageIndex)
+                          }
+                          aria-label={`Go to image ${index + 1}`}
+                          className={`rounded-full transition-all duration-200 ${
+                            imageIndex === index
+                              ? "h-2 w-6 bg-black"
+                              : "h-2 w-2 bg-black/40 hover:bg-black/70"
+                          }`}
+                        />
+                      ))}
                     </div>
                   </>
                 )}

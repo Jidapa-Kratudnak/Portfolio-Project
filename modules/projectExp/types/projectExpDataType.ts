@@ -1,5 +1,5 @@
 export type ProjectExpDataType = {
-  imageURL?: string;
+  imageURL?: string[];
   THprojectName: string;
   ENprojectName: string;
   description: string[];

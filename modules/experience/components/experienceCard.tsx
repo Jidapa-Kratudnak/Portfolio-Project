@@ -1,7 +1,13 @@
 "use client";
 
 import { Button, Card, ConfigProvider, Timeline } from "antd";
-import { Award, BriefcaseBusiness, Building2, CalendarDays, MapPin } from "lucide-react";
+import {
+  Award,
+  BriefcaseBusiness,
+  Building2,
+  CalendarDays,
+  MapPin,
+} from "lucide-react";
 import { ExperienceData } from "../types/experienceDataType";
 
 type ExperienceCardProps = {
@@ -86,15 +92,20 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                     </div>
 
                     <div className="mt-6 flex sm:mt-7 sm:justify-end">
-                      <Button
-                        type="default"
-                        icon={<Award size={18} />}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="h-auto! w-full! rounded-full! border-[#6c5846]! bg-[#6c5846]! px-5! py-2.5! text-white! transition-all duration-200 hover:-translate-y-1  hover:*:text-[#6c5846] hover:*:border-[#6c5846] hover:bg-white! sm:w-auto!"
-                      >
-                        ตรวจสอบเกียรติบัตร
-                      </Button>
+                      {experience.certificateLink && (
+                        <Button
+                          type="default"
+                          icon={<Award size={18} />}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-auto! w-full! rounded-full! border-[#6c5846]! bg-[#6c5846]! px-5! py-2.5! text-white! transition-all duration-200 hover:-translate-y-1  hover:*:text-[#6c5846] hover:*:border-[#6c5846] hover:bg-white! sm:w-auto!"
+                          onClick={() => {
+                            window.open(experience.certificateLink, "_blank");
+                          }}
+                        >
+                          ตรวจสอบเกียรติบัตร
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </Card>

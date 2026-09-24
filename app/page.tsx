@@ -9,7 +9,7 @@ import { educationData } from "@/modules/educations/data/educationsData";
 import ProjectExpSection from "@/modules/projectExp/components/projectExpSection";
 import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
 import ActivitiesSection from "@/modules/activities/components/activitiesSection";
-import { activitiesData } from "@/modules/activities/data/activitiesDataSection";
+import { activitiesData } from "@/modules/activities/data/activitiesData";
 import { skillsData } from "@/modules/skills/data/skillsData";
 import SkillsSection from "@/modules/skills/components/skillsSection";
 import { experienceData } from "@/modules/experience/data/experienceData";

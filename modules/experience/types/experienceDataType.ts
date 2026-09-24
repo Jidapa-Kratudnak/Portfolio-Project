@@ -10,4 +10,5 @@ export type ExperienceData = {
   startDate: string;
   endDate: string;
   description: string[];
+  certificateLink: string;
 };

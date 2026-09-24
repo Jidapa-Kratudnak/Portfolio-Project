@@ -1,7 +1,7 @@
 import { AboutMeDataType } from "../types/aboutMeDataType";
 
 export const aboutMeData: AboutMeDataType = {
-    profileImage: "/images/imageTest.jpeg",
+    profileImage: "https://drive.google.com/uc?export=view&id=1rqXq5dJN2HU1owEfdJ4yCQB6BlC5we7T",
     THfirstName: "จิดาภา",
     THlastName: "กระตุดนาค",
     ENfirstName: "Jidapa",
