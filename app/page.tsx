@@ -1,16 +1,16 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import AboutMeSection from "@/modules/aboutMe/components/aboutMe";
+import AboutMeSection from "@/modules/aboutMe/components/aboutMeSection";
 import Welcome from "@/modules/welcome/welcome";
 import { Divider } from "antd";
 import { aboutMeData } from "@/modules/aboutMe/data/aboutMeData";
-import EducationsSection from "@/modules/educations/components/educations";
+import EducationsSection from "@/modules/educations/components/educationsSection";
 import { educationData } from "@/modules/educations/data/educationsData";
-import ProjectExpSection from "@/modules/projectExp/components/projectExp";
+import ProjectExpSection from "@/modules/projectExp/components/projectExpSection";
 import { ProjectExpData } from "@/modules/projectExp/data/projectExpData";
-import ActivitiesSection from "@/modules/activities/components/activities";
-import Skills from "@/modules/skills/components/skills";
-import { activitiesData } from "@/modules/activities/data/activitiesData";
+import ActivitiesSection from "@/modules/activities/components/activitiesSection";
+import Skills from "@/modules/skills/components/skillsSection";
+import { activitiesData } from "@/modules/activities/data/activitiesDataSection";
 
 export default function Home() {
   return (
