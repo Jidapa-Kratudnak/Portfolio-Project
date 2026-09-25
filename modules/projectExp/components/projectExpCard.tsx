@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { Card } from "antd";
-import { useEffect, useRef, useState, type TouchEvent } from "react";
-import { ProjectExpDataType } from "../types/projectExpDataType";
 import { ImageOff } from "lucide-react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
+import { createPortal } from "react-dom";
+import type { ProjectExpDataType } from "../types/projectExpDataType";
 
 interface ProjectExpCardProps {
   projectExpData: ProjectExpDataType[];
@@ -13,9 +14,22 @@ interface ProjectExpCardProps {
 const SWIPE_THRESHOLD = 40;
 
 const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [hasOverflow, setHasOverflow] = useState<Record<string, boolean>>({});
+  const [currentImage, setCurrentImage] = useState<Record<string, number>>({});
+  const [zoomedKey, setZoomedKey] = useState<string | null>(null);
+
+  const touchStartX = useRef<number | null>(null);
+
+  const descriptionRefs = useRef<Record<string, HTMLParagraphElement | null>>(
+    {},
+  );
+  const technologiesRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const languageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
   useEffect(() => {
-    const imageUrls = projectExpData.flatMap(
-      (project) => project.imageURL ?? [],
+    const imageUrls = projectExpData.flatMap((project) =>
+      (project.images ?? []).map((image) => image.imageURL),
     );
 
     imageUrls.forEach((url) => {
@@ -23,10 +37,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
       image.src = url;
     });
   }, [projectExpData]);
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
-  const [hasOverflow, setHasOverflow] = useState<Record<string, boolean>>({});
-  const [currentImage, setCurrentImage] = useState<Record<string, number>>({});
-  const [zoomedKey, setZoomedKey] = useState<string | null>(null);
+
   useEffect(() => {
     if (!zoomedKey) return;
 
@@ -46,14 +57,6 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [zoomedKey]);
-
-  const touchStartX = useRef<number | null>(null);
-
-  const descriptionRefs = useRef<Record<string, HTMLParagraphElement | null>>(
-    {},
-  );
-  const technologiesRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const languageRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -151,7 +154,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
     <>
       {projectExpData.map((project) => {
         const projectKey = `${project.ENprojectName}-${project.THprojectName}`;
-        const imageURLs = project.imageURL ?? [];
+        const images = project.images ?? [];
         const imageIndex = currentImage[projectKey] ?? 0;
 
         const descriptionExpanded =
@@ -169,20 +172,11 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
         return (
           <div key={projectKey} className="mb-10">
             <Card
-              className={`
-                overflow-hidden!
-                rounded-4xl!
-                border-0!
-                shadow-xl!
-                sm:rounded-[40px]!
-                ${
-                  descriptionExpanded ||
-                  technologiesExpanded ||
-                  languageExpanded
-                    ? "lg:min-h-150!"
-                    : "lg:h-150!"
-                }
-              `}
+              className={`overflow-hidden! rounded-4xl! border-0! shadow-xl! sm:rounded-[40px]! ${
+                descriptionExpanded || technologiesExpanded || languageExpanded
+                  ? "lg:min-h-150!"
+                  : "lg:h-150!"
+              }`}
               styles={{
                 body: {
                   height: "100%",
@@ -195,10 +189,10 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                   className="relative min-h-70 touch-pan-y overflow-hidden bg-slate-100 sm:min-h-87.5 lg:h-full"
                   onTouchStart={handleTouchStart}
                   onTouchEnd={(event) =>
-                    handleTouchEnd(event, projectKey, imageURLs.length)
+                    handleTouchEnd(event, projectKey, images.length)
                   }
                 >
-                  {imageURLs.length > 0 ? (
+                  {images.length > 0 ? (
                     <>
                       <button
                         type="button"
@@ -208,12 +202,22 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                       >
                         <Image
                           key={`${projectKey}-${imageIndex}`}
-                          src={imageURLs[imageIndex]}
-                          alt={`${project.ENprojectName} image ${imageIndex + 1}`}
+                          src={images[imageIndex].imageURL}
+                          alt={
+                            images[imageIndex].imageDescription ||
+                            `${project.ENprojectName} image ${imageIndex + 1}`
+                          }
                           fill
                           sizes="(min-width: 1024px) 50vw, 100vw"
                           className="object-contain"
                         />
+
+                        {images[imageIndex].imageDescription && (
+                          <span className="pointer-events-none absolute inset-x-0 bottom-10 z-10 bg-black/60 px-4 py-2 text-center text-sm text-white">
+                            {images[imageIndex].imageDescription}
+                          </span>
+                        )}
+
                         <span className="pointer-events-none absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-black shadow-md backdrop-blur-sm sm:right-4 sm:top-4">
                           <svg
                             viewBox="0 0 24 24"
@@ -231,12 +235,12 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                         </span>
                       </button>
 
-                      {imageURLs.length > 1 && (
+                      {images.length > 1 && (
                         <>
                           <button
                             type="button"
                             onClick={() =>
-                              previousImage(projectKey, imageURLs.length)
+                              previousImage(projectKey, images.length)
                             }
                             aria-label="Previous image"
                             className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md transition hover:bg-white sm:left-4 sm:h-10 sm:w-10"
@@ -246,9 +250,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
 
                           <button
                             type="button"
-                            onClick={() =>
-                              nextImage(projectKey, imageURLs.length)
-                            }
+                            onClick={() => nextImage(projectKey, images.length)}
                             aria-label="Next image"
                             className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md transition hover:bg-white sm:right-4 sm:h-10 sm:w-10"
                           >
@@ -256,13 +258,13 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                           </button>
 
                           <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
-                            {imageURLs.map((imageURL, index) => (
+                            {images.map((image, index) => (
                               <button
-                                key={`${imageURL}-${index}`}
+                                key={`${image.imageURL}-${index}`}
                                 type="button"
                                 onClick={() => goToImage(projectKey, index)}
                                 aria-label={`Go to image ${index + 1}`}
-                                className={`h-2 rounded-full transition-all ${
+                                className={`h-2 rounded-full border-0 outline-none transition-all ${
                                   imageIndex === index
                                     ? "w-6 bg-black"
                                     : "w-2 bg-black/40"
@@ -288,7 +290,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                     {project.ENprojectName}
                   </span>
 
-                  <h2 className="mt-2 text-2xl font-bold text-slate-800 sm:text-2xl">
+                  <h2 className="mt-2 text-2xl font-bold text-slate-800">
                     {project.THprojectName}
                   </h2>
 
@@ -298,7 +300,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                         descriptionRefs.current[`${projectKey}-description`] =
                           element;
                       }}
-                      className={`text-base leading-7 text-slate-600  ${
+                      className={`text-base leading-7 text-slate-600 ${
                         descriptionExpanded ? "" : "line-clamp-3"
                       }`}
                     >
@@ -419,90 +421,111 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
           </div>
         );
       })}
+
       {zoomedKey &&
-        (() => {
-          const project = projectExpData.find(
-            (item) =>
-              `${item.ENprojectName}-${item.THprojectName}` === zoomedKey,
-          );
+  typeof document !== "undefined" &&
+  createPortal(
+    (() => {
+      const project = projectExpData.find(
+        (item) =>
+          `${item.ENprojectName}-${item.THprojectName}` === zoomedKey,
+      );
 
-          if (!project) return null;
+      if (!project) return null;
 
-          const imageURLs = project.imageURL ?? [];
-          const imageIndex = currentImage[zoomedKey] ?? 0;
+      const images = project.images ?? [];
+      const imageIndex = currentImage[zoomedKey] ?? 0;
 
-          return (
-            <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-8"
-              onClick={() => setZoomedKey(null)}
-            >
-              <button
-                type="button"
-                onClick={() => setZoomedKey(null)}
-                aria-label="ปิดภาพขยาย"
-                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white"
-              >
-                ×
-              </button>
+      return (
+        <div
+          className="fixed inset-0 z-[9999] flex h-dvh w-screen items-center justify-center overflow-hidden bg-black/85 p-4 sm:p-6 md:p-8"
+          onClick={() => setZoomedKey(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setZoomedKey(null)}
+            aria-label="ปิดภาพขยาย"
+            className="fixed right-4 top-4 z-[10000] flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:right-6 sm:top-6"
+          >
+            ×
+          </button>
 
-              <div
-                className="relative flex h-full max-h-[85vh] w-full max-w-6xl items-center justify-center"
-                onClick={(event) => event.stopPropagation()}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={(event) =>
-                  handleTouchEnd(event, zoomedKey, imageURLs.length)
-                }
-              >
-                <Image
-                  src={imageURLs[imageIndex]}
-                  alt={`${project.ENprojectName} image ${imageIndex + 1}`}
-                  width={1600}
-                  height={1200}
-                  sizes="90vw"
-                  className="max-h-[85vh] w-auto max-w-full object-contain"
-                />
+          <div
+className="relative flex h-[82dvh] w-[82vw] max-w-[82vw] flex-col items-center justify-center gap-3"            onClick={(event) => event.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={(event) =>
+              handleTouchEnd(event, zoomedKey, images.length)
+            }
+          >
+            {images.length > 0 && (
+              <>
+<div className="relative flex h-[72dvh] w-[80vw] items-center justify-center">                  <Image
+                    src={images[imageIndex].imageURL}
+                    alt={
+                      images[imageIndex].imageDescription ||
+                      `${project.ENprojectName} image ${imageIndex + 1}`
+                    }
+                    width={1600}
+                    height={1200}
+                    sizes="70vw"
+                    className="max-h-full max-w-auto object-contain"
+                  />
+                </div>
 
-                {imageURLs.length > 1 && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => previousImage(zoomedKey, imageURLs.length)}
-                      aria-label="Previous image"
-                      className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:left-4"
-                    >
-                      ‹
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => nextImage(zoomedKey, imageURLs.length)}
-                      aria-label="Next image"
-                      className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:right-4"
-                    >
-                      ›
-                    </button>
-
-                    <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
-                      {imageURLs.map((imageURL, index) => (
-                        <button
-                          key={`${imageURL}-${index}`}
-                          type="button"
-                          onClick={() => goToImage(zoomedKey, index)}
-                          aria-label={`Go to image ${index + 1}`}
-                          className={`h-2 rounded-full transition-all ${
-                            imageIndex === index
-                              ? "w-6 bg-black"
-                              : "w-2 bg-black/40"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </>
+                {images[imageIndex].imageDescription && (
+<p className="max-w-[80vw] shrink-0 px-4 text-center text-sm text-white sm:text-base">                    {images[imageIndex].imageDescription}
+                  </p>
                 )}
-              </div>
-            </div>
-          );
-        })()}
+              </>
+            )}
+
+            {images.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() =>
+                    previousImage(zoomedKey, images.length)
+                  }
+                  aria-label="Previous image"
+                  className="absolute left-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:left-2"
+                >
+                  ‹
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => nextImage(zoomedKey, images.length)}
+                  aria-label="Next image"
+                  className="absolute right-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:right-2"
+                >
+                  ›
+                </button>
+
+                <div className="absolute bottom-0 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+                  {images.map((image, index) => (
+                    <button
+                      key={`${image.imageURL}-${index}`}
+                      type="button"
+                      onClick={() =>
+                        goToImage(zoomedKey, index)
+                      }
+                      aria-label={`Go to image ${index + 1}`}
+                      className={`h-2 rounded-full border-0 outline-none transition-all ${
+                        imageIndex === index
+                          ? "w-6 bg-black"
+                          : "w-2 bg-black/40"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    })(),
+    document.body,
+  )}
     </>
   );
 };
