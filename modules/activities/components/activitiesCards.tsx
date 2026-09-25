@@ -329,12 +329,12 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                     "ยังไม่ระบุวันที่"
                   )}
                 </span>
-                <h2 className="text-xl font-bold leading-snug text-slate-800 sm:text-2xl lg:text-3xl">
+                <h2 className="text-xl font-bold leading-snug text-slate-800 sm:text-2xl lg:text-2xl">
                   {activity.activityName}
                 </h2>
 
                 <div>
-                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[20px]">
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base lg:text-lg">
                     {activity.activityDescription
                       .split("\n")
                       .map((desc, index) => (

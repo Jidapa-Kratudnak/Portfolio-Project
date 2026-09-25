@@ -8,9 +8,9 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#6c5846] p-3 text-[#F1EBE4] sm:p-4 md:p-5">
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 lg:ml-20 lg:px-0">
-        <h1 className="text-[20px] font-bold sm:text-xl">
+    <nav className="sticky top-0 z-50 left-0 w-screen bg-[#6c5846] p-3 text-[#F1EBE4] sm:p-4 md:p-5">
+      <div className="flex w-full items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10">
+        <h1 className="text-lg font-bold sm:text-xl">
           Jidapa_Kra
         </h1>
 
@@ -30,17 +30,11 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div
-  className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out lg:hidden ${
-    isMenuOpen
-      ? "pointer-events-auto max-h-125 opacity-100"
-      : "pointer-events-none max-h-0 opacity-0"
-  }`}
->
-  <div className="mt-3 border-t border-white/20 px-4 pt-3">
-    <HeaderAnchor mobile />
-  </div>
-</div>
+        <div className="overflow-hidden lg:hidden">
+          <div className="mt-3 border-t border-white/20 px-4 pt-3">
+            <HeaderAnchor mobile />
+          </div>
+        </div>
       )}
     </nav>
   );

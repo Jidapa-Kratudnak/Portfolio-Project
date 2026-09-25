@@ -21,7 +21,7 @@ const SkillsCard = ({ skillsData }: SkillsCardProps) => {
               },
             }}
           >
-            <div className="flex min-h-70 flex-col p-6 sm:p-8 lg:p-10">
+            <div className="flex min-h-70 flex-col p-6 sm:p-8 lg:p-8">
               <h2 className="mb-6 text-center text-xl font-bold text-slate-800 sm:text-2xl">
                 {skillGroup.skillType}
               </h2>

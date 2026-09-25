@@ -23,7 +23,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#welcome",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               ยินดีต้อนรับ
             </span>
@@ -34,7 +34,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#about",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               เกี่ยวกับฉัน
             </span>
@@ -45,7 +45,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#education",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               ประวัติการศึกษา
             </span>
@@ -56,7 +56,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#projects",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               ประสบการณ์การทำโครงงาน
             </span>
@@ -67,7 +67,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#activities",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               กิจกรรมและการอบรม
             </span>
@@ -78,7 +78,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#skills",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               ทักษะความสามารถ
             </span>
@@ -89,7 +89,7 @@ const HeaderAnchor = ({ mobile = false }: HeaderAnchorProps) => {
           href: "#experience",
           title: (
             <span
-              className={`text-[20px] font-medium! transition-colors duration-200 ${textColor}`}
+              className={`text-base font-medium! transition-colors duration-200 ${textColor}`}
             >
               ประสบการณ์การฝึกสหกิจศึกษา
             </span>

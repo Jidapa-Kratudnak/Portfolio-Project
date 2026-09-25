@@ -14,15 +14,15 @@ const SWIPE_THRESHOLD = 40;
 
 const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
   useEffect(() => {
-  const imageUrls = projectExpData.flatMap(
-    (project) => project.imageURL ?? [],
-  );
+    const imageUrls = projectExpData.flatMap(
+      (project) => project.imageURL ?? [],
+    );
 
-  imageUrls.forEach((url) => {
-    const image = new window.Image();
-    image.src = url;
-  });
-}, [projectExpData]);
+    imageUrls.forEach((url) => {
+      const image = new window.Image();
+      image.src = url;
+    });
+  }, [projectExpData]);
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [hasOverflow, setHasOverflow] = useState<Record<string, boolean>>({});
   const [currentImage, setCurrentImage] = useState<Record<string, number>>({});
@@ -215,20 +215,20 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                           className="object-contain"
                         />
                         <span className="pointer-events-none absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-black shadow-md backdrop-blur-sm sm:right-4 sm:top-4">
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="h-4 w-4"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <circle cx="11" cy="11" r="7" />
-      <path
-        d="M21 21l-4.3-4.3M11 8v6M8 11h6"
-        strokeLinecap="round"
-      />
-    </svg>
-  </span>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            className="h-4 w-4"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <circle cx="11" cy="11" r="7" />
+                            <path
+                              d="M21 21l-4.3-4.3M11 8v6M8 11h6"
+                              strokeLinecap="round"
+                            />
+                          </svg>
+                        </span>
                       </button>
 
                       {imageURLs.length > 1 && (
@@ -264,8 +264,8 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                                 aria-label={`Go to image ${index + 1}`}
                                 className={`h-2 rounded-full transition-all ${
                                   imageIndex === index
-                                    ? "w-6 bg-white"
-                                    : "w-2 bg-white/60"
+                                    ? "w-6 bg-black"
+                                    : "w-2 bg-black/40"
                                 }`}
                               />
                             ))}
@@ -275,20 +275,20 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
-                    <span className="flex flex-col items-center justify-center gap-2 text-slate-500">
-                      <ImageOff className="h-8 w-8" />
-                      <span>ไม่มีรูปที่จะแสดง</span>
-                    </span>
-                  </div>
+                      <span className="flex flex-col items-center justify-center gap-2 text-slate-500">
+                        <ImageOff className="h-8 w-8" />
+                        <span>ไม่มีรูปที่จะแสดง</span>
+                      </span>
+                    </div>
                   )}
                 </div>
 
-                <div className="flex min-h-0 flex-col p-6 sm:p-8 md:p-10">
-                  <span className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                <div className="flex min-h-0 flex-col p-6 sm:p-8">
+                  <span className="text-sm font-medium uppercase tracking-widest text-slate-500">
                     {project.ENprojectName}
                   </span>
 
-                  <h2 className="mt-2 text-2xl font-bold text-slate-800 sm:text-3xl">
+                  <h2 className="mt-2 text-2xl font-bold text-slate-800 sm:text-2xl">
                     {project.THprojectName}
                   </h2>
 
@@ -298,7 +298,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                         descriptionRefs.current[`${projectKey}-description`] =
                           element;
                       }}
-                      className={`text-base leading-7 text-slate-600 sm:text-lg ${
+                      className={`text-base leading-7 text-slate-600  ${
                         descriptionExpanded ? "" : "line-clamp-3"
                       }`}
                     >
@@ -326,7 +326,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                   <div className="mt-6">
                     <div className="flex items-start gap-3">
                       <span className="shrink-0 pt-2 font-medium">
-                        Technologies:
+                        เทคโนโลยีที่ใช้:
                       </span>
 
                       <div
@@ -368,7 +368,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                   <div className="mt-6">
                     <div className="flex items-start gap-3">
                       <span className="shrink-0 pt-2 font-medium">
-                        Language:
+                        ภาษาที่ใช้:
                       </span>
 
                       <div
@@ -420,93 +420,89 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
         );
       })}
       {zoomedKey &&
-  (() => {
-    const project = projectExpData.find(
-      (item) =>
-        `${item.ENprojectName}-${item.THprojectName}` === zoomedKey,
-    );
+        (() => {
+          const project = projectExpData.find(
+            (item) =>
+              `${item.ENprojectName}-${item.THprojectName}` === zoomedKey,
+          );
 
-    if (!project) return null;
+          if (!project) return null;
 
-    const imageURLs = project.imageURL ?? [];
-    const imageIndex = currentImage[zoomedKey] ?? 0;
+          const imageURLs = project.imageURL ?? [];
+          const imageIndex = currentImage[zoomedKey] ?? 0;
 
-    return (
-      <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-8"
-        onClick={() => setZoomedKey(null)}
-      >
-        <button
-          type="button"
-          onClick={() => setZoomedKey(null)}
-          aria-label="ปิดภาพขยาย"
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white"
-        >
-          ×
-        </button>
-
-        <div
-          className="relative flex h-full max-h-[85vh] w-full max-w-6xl items-center justify-center"
-          onClick={(event) => event.stopPropagation()}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={(event) =>
-            handleTouchEnd(event, zoomedKey, imageURLs.length)
-          }
-        >
-          <Image
-            src={imageURLs[imageIndex]}
-            alt={`${project.ENprojectName} image ${imageIndex + 1}`}
-            width={1600}
-            height={1200}
-            sizes="90vw"
-            className="max-h-[85vh] w-auto max-w-full object-contain"
-          />
-
-          {imageURLs.length > 1 && (
-            <>
+          return (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-8"
+              onClick={() => setZoomedKey(null)}
+            >
               <button
                 type="button"
-                onClick={() =>
-                  previousImage(zoomedKey, imageURLs.length)
-                }
-                aria-label="Previous image"
-                className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:left-4"
+                onClick={() => setZoomedKey(null)}
+                aria-label="ปิดภาพขยาย"
+                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white"
               >
-                ‹
+                ×
               </button>
 
-              <button
-                type="button"
-                onClick={() =>
-                  nextImage(zoomedKey, imageURLs.length)
+              <div
+                className="relative flex h-full max-h-[85vh] w-full max-w-6xl items-center justify-center"
+                onClick={(event) => event.stopPropagation()}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={(event) =>
+                  handleTouchEnd(event, zoomedKey, imageURLs.length)
                 }
-                aria-label="Next image"
-                className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:right-4"
               >
-                ›
-              </button>
+                <Image
+                  src={imageURLs[imageIndex]}
+                  alt={`${project.ENprojectName} image ${imageIndex + 1}`}
+                  width={1600}
+                  height={1200}
+                  sizes="90vw"
+                  className="max-h-[85vh] w-auto max-w-full object-contain"
+                />
 
-              <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
-                {imageURLs.map((imageURL, index) => (
-                  <button
-                    key={`${imageURL}-${index}`}
-                    type="button"
-                    onClick={() => goToImage(zoomedKey, index)}
-                    aria-label={`Go to image ${index + 1}`}
-                    className={`h-2 rounded-full transition-all ${
-                      imageIndex === index
-                        ? "w-6 bg-white"
-                        : "w-2 bg-white/50"
-                    }`}
-                  />
-                ))}
+                {imageURLs.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => previousImage(zoomedKey, imageURLs.length)}
+                      aria-label="Previous image"
+                      className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:left-4"
+                    >
+                      ‹
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => nextImage(zoomedKey, imageURLs.length)}
+                      aria-label="Next image"
+                      className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-md hover:bg-white sm:right-4"
+                    >
+                      ›
+                    </button>
+
+                    <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+                      {imageURLs.map((imageURL, index) => (
+                        <button
+                          key={`${imageURL}-${index}`}
+                          type="button"
+                          onClick={() => goToImage(zoomedKey, index)}
+                          aria-label={`Go to image ${index + 1}`}
+                          className={`h-2 rounded-full transition-all ${
+                            imageIndex === index
+                              ? "w-6 bg-black"
+                              : "w-2 bg-black/40"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  })()}
+            </div>
+          );
+        })()}
     </>
   );
 };

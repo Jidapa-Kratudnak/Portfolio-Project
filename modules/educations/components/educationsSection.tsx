@@ -15,7 +15,7 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
         <span className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-[#3b302675] sm:text-base">
           Education
         </span>
-        <h1 className="text-3xl font-bold text-[#3b3026] sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-[65px]">
+        <h1 className="text-2xl font-bold text-[#3b3026] sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-5xl">
           ประวัติการศึกษา
         </h1>
         <div className="mt-4 h-1 w-20 rounded-full bg-linear-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
@@ -44,15 +44,15 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
             </div>
 
             <div className="order-2 text-center md:order-0 md:text-left">
-              <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl lg:text-4xl">
+              <h2 className="text-2xl font-bold text-slate-800 sm:text-2xl lg:text-4xl">
                 {data.institution}
               </h2>
 
-              <p className="mt-1 text-lg text-slate-500 sm:text-xl lg:text-2xl">
+              <p className="mt-1 text-lg text-slate-500 sm:text-xl lg:text-xl">
                 {data.campus}
               </p>
 
-              <div className="mt-5 space-y-2.5 text-base leading-7 text-slate-700 sm:text-lg lg:text-xl">
+              <div className="mt-5 space-y-2.5 text-base leading-7 text-slate-700 sm:text-lg lg:text-lg">
                 <p>
                   <span className="font-semibold text-slate-900">คณะ:</span>{" "}
                   {data.faculty}

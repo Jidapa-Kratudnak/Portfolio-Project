@@ -58,7 +58,7 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                       </div>
 
                       <div className="min-w-0">
-                        <h2 className="wrap-break-word text-lg font-bold leading-tight text-slate-800 sm:text-2xl lg:text-3xl">
+                        <h2 className="wrap-break-word text-lg font-bold leading-tight text-slate-800 sm:text-2xl lg:text-2xl">
                           {experience.company}
                         </h2>
 
@@ -78,7 +78,7 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                     </div>
 
                     <div className="mt-5 sm:mt-6">
-                      <ul className="space-y-2 text-sm leading-7 text-slate-600 sm:space-y-3 sm:text-base lg:text-[20px]">
+                      <ul className="space-y-2 text-sm leading-7 text-slate-600 sm:space-y-3 sm:text-base lg:text-lg">
                         {experience.description.map((description, index) => (
                           <li key={index} className="flex items-start gap-3">
                             <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6c5846]" />

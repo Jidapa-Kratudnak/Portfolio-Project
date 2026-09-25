@@ -16,7 +16,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
           <span className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-[#3b302675] sm:text-base">
             About Me
           </span>
-          <h1 className="text-3xl font-bold text-[#3b3026] sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-[65px]">
+          <h1 className="text-2xl font-bold text-[#3b3026] sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-5xl">
             เกี่ยวกับฉัน
           </h1>
           <div className="mt-4 h-1 w-20 rounded-full bg-linear-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
@@ -59,11 +59,11 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <UserRound size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-[20px]">
+                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-lg">
                         ชื่อ-นามสกุล
                       </span>
 
-                      <span className="wrap-break-word *:sm:font-medium lg:text-[20px]">
+                      <span className="wrap-break-word *:sm:font-medium lg:text-lg">
                         {aboutMeData.THfirstName} {aboutMeData.THlastName}
                       </span>
                     </div>
@@ -73,11 +73,11 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <Phone size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-[20px]">
+                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-lg">
                         เบอร์โทรศัพท์
                       </span>
 
-                      <span className="wrap-break-word *:sm:font-medium lg:text-[20px]">
+                      <span className="wrap-break-word *:sm:font-medium lg:text-lg">
                         {aboutMeData.phone}
                       </span>
                     </div>
@@ -87,11 +87,11 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <Mail size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-[20px]">
+                      <span className="shrink-0 sm:w-27.5 sm:font-medium md:w-32.5 lg:text-lg">
                         E-mail
                       </span>
 
-                      <span className="break-all *:sm:font-medium lg:text-[20px]">
+                      <span className="break-all *:sm:font-medium lg:text-lg">
                         {aboutMeData.email}
                       </span>
                     </div>
@@ -101,11 +101,11 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                     <MapPin size={21} className="mt-1 shrink-0" />
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                      <span className="shrink-0 *:sm:font-medium sm:w-27.5 md:w-32.5 lg:text-[20px]">
+                      <span className="shrink-0 *:sm:font-medium sm:w-27.5 md:w-32.5 lg:text-lg">
                         ที่อยู่
                       </span>
 
-                      <span className="wrap-break-word *:sm:font-medium lg:text-[20px]">
+                      <span className="wrap-break-word *:sm:font-medium lg:text-lg">
                         {aboutMeData.address}
                       </span>
                     </div>
@@ -114,8 +114,8 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
 
                 <Divider className="mx-auto! my-6! w-[80%]! border-t-2! border-[#22231A]/20!" />
 
-                <div className="flex flex-wrap items-center gap-4 p-2 text-base sm:p-5 sm:text-lg lg:text-[20px]">
-                  <p className="flex items-center gap-2 sm:font-medium lg:text-[20px]">
+                <div className="flex flex-wrap items-center gap-4 p-2 text-base sm:p-5 sm:text-lg lg:text-lg">
+                  <p className="flex items-center gap-2 sm:font-medium lg:text-lg">
                     <ContactRound size={20} className="shrink-0" />
                     <span>ช่องทางอื่นๆ</span>
                   </p>
@@ -157,7 +157,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                 },
               }}
             >
-              <div className="text-base leading-7 sm:text-lg sm:leading-8 md:p-4 lg:text-[22px] m-10">
+              <div className="text-base leading-7 sm:text-lg sm:leading-8 md:p-4 lg:text-lg m-6">
                 <p className="indent-8">{aboutMeData.THaboutMe}</p>
 
                

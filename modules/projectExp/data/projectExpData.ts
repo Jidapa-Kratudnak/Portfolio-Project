@@ -28,6 +28,6 @@ export const ProjectExpData: ProjectExpDataType[] = [
       "LINE LIFF",
       "LINE Messaging API",
     ],
-    language: ["TypeScript", "Java"],
+    language: ["TypeScript", "Java", "SQL", "HTML", "CSS"],
   },
 ];

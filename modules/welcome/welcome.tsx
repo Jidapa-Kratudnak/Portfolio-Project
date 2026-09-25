@@ -6,11 +6,11 @@ import { ChevronsDown } from "lucide-react";
 const Welcome = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-      <h1 className="mb-4 text-4xl font-bold sm:text-5xl md:text-6xl lg:text-[69px]">
+      <h1 className="mb-4 text-4xl font-bold sm:text-5xl md:text-5xl lg:text-6xl">
         Welcome to My Portfolio!
       </h1>
 
-      <h1 className="mb-4 text-2xl font-normal sm:text-3xl md:text-4xl lg:text-[46px]">
+      <h1 className="mb-4 text-2xl font-normal sm:text-2xl md:text-4xl lg:text-4xl">
         ยินดีต้อนรับเข้าสู่พอร์ตโฟลิโอของฉัน!
       </h1>
 
