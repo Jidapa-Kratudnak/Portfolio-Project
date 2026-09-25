@@ -1,12 +1,59 @@
 @import "tailwindcss";
+@import "tailwind-animations";
 
 :root {
   --background: #f1ebe4;
-  --foreground: #22251a;
+  --foreground: #392e24;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-prompt), sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-prompt), sans-serif;
+}
+
+.ant-card,
+.ant-card *,
+.ant-btn,
+.ant-timeline,
+.ant-timeline *,
+.header-anchor,
+.header-anchor *,
+.header-anchor-mobile,
+.header-anchor-mobile * {
+  font-family: var(--font-prompt), sans-serif;
+}
+
+/* PC Anchor Color*/
+.header-anchor .ant-anchor::before,
+.header-anchor-mobile .ant-anchor::before {
+  border-inline-start-color: #d6c2ad !important;
+}
+.header-anchor .ant-anchor-ink,
+.header-anchor-mobile .ant-anchor-ink {
+  background-color: #6c5846 !important;
+}
+/* Mobile Anchor Color */
+.header-anchor-mobile .ant-anchor::before {
+  border-inline-start-color: #6c5846 !important;
+}
+.header-anchor-mobile .ant-anchor-ink {
+  background-color: #ffffff !important;
 }

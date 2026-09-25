@@ -1,5 +1,10 @@
+type image = {
+  imageURL: string;
+  imageDescription: string;
+}
+
 export type ProjectExpDataType = {
-  imageURL?: string;
+  images?: image[];
   THprojectName: string;
   ENprojectName: string;
   description: string[];

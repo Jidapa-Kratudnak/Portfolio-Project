@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Prompt, Rubik } from "next/font/google";
 import "./globals.css";
+import Loading from "@/components/loading";
 
 export const metadata: Metadata = {
   title: "Jidapa | Resume&Portfolio",
@@ -30,6 +31,7 @@ export default function RootLayout({
   className={`${rubik.variable} ${prompt.variable} h-full antialiased`}
 >
       <body className="min-h-full flex flex-col">
+        <Loading />
         {children}
       </body>
     </html>
