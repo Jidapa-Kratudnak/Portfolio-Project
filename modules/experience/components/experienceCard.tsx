@@ -119,7 +119,7 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
               ),
 
               content: (
-                <div className="py-2 text-sm font-medium text-slate-500">
+                <div className="py-2 text-sm font-medium text-[#3b302675]">
                   ยังไม่มีประสบการณ์เพิ่มเติมในขณะนี้...
                 </div>
               ),

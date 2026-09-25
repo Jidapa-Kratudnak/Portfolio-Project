@@ -13,10 +13,10 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
     <>
       <section className="w-full bg-linear-to-b  px-4 py-12 sm:py-16">
         <div className="flex flex-col items-center text-center">
-          <span className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-slate-400 sm:text-base">
+          <span className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-[#3b302675] sm:text-base">
             About Me
           </span>
-          <h1 className="text-3xl font-bold text-slate-800 sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-[65px]">
+          <h1 className="text-3xl font-bold text-[#3b3026] sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-[65px]">
             เกี่ยวกับฉัน
           </h1>
           <div className="mt-4 h-1 w-20 rounded-full bg-linear-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
@@ -54,7 +54,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                   },
                 }}
               >
-                <div className="space-y-5 p-2 sm:p-3 md:p-5">
+                <div className="space-y-5 p-2">
                   <div className="flex items-start gap-3">
                     <UserRound size={21} className="mt-1 shrink-0" />
 
@@ -114,10 +114,10 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
 
                 <Divider className="mx-auto! my-6! w-[80%]! border-t-2! border-[#22231A]/20!" />
 
-                <div className="flex flex-col gap-3 p-2 text-base sm:grid sm:grid-cols-[minmax(110px,150px)_1fr] sm:gap-x-4 sm:p-5 sm:text-lg lg:text-[20px]">
+                <div className="flex flex-wrap items-center gap-4 p-2 text-base sm:p-5 sm:text-lg lg:text-[20px]">
                   <p className="flex items-center gap-2 sm:font-medium lg:text-[20px]">
                     <ContactRound size={20} className="shrink-0" />
-                    <span>อื่นๆ</span>
+                    <span>ช่องทางอื่นๆ</span>
                   </p>
 
                   <div className="flex flex-wrap items-center gap-4">

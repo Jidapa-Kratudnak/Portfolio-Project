@@ -17,7 +17,7 @@ const Welcome = () => {
      <Button
         type="primary"
         shape="round"
-        className="m-6! h-auto! w-auto! border-[#6c5846]! bg-[#6c5846]! px-8! py-4! text-lg! text-white! transition-all duration-200 hover:-translate-y-1 hover:!border-[#6c5846] hover:!bg-white hover:!text-[#6c5846] sm:m-8! sm:px-10! sm:py-5! sm:text-xl! md:m-10! md:px-12! md:py-6! md:text-2xl!"
+        className="m-6! h-auto! w-auto! border-[#6c5846]! bg-[#6c5846]! px-8! py-4! text-lg! text-white! transition-all duration-200 hover:-translate-y-1 hover:border-[#6c5846]! hover:bg-white! hover:text-[#6c5846]! sm:m-8! sm:px-10! sm:py-5! sm:text-xl! md:m-10! md:px-12! md:py-6! md:text-2xl!"
         onClick={() => {
           document.getElementById("about")?.scrollIntoView({
             behavior: "smooth",

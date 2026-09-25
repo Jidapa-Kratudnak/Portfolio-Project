@@ -13,6 +13,16 @@ interface ProjectExpCardProps {
 const SWIPE_THRESHOLD = 40;
 
 const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
+  useEffect(() => {
+  const imageUrls = projectExpData.flatMap(
+    (project) => project.imageURL ?? [],
+  );
+
+  imageUrls.forEach((url) => {
+    const image = new window.Image();
+    image.src = url;
+  });
+}, [projectExpData]);
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [hasOverflow, setHasOverflow] = useState<Record<string, boolean>>({});
   const [currentImage, setCurrentImage] = useState<Record<string, number>>({});

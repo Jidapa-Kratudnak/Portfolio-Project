@@ -129,7 +129,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
               transition-shadow!
               duration-300!
               hover:shadow-2xl!
-              sm:rounded-[32px]!
+              sm:rounded-4xl!
             "
             styles={{
               body: {
@@ -140,7 +140,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
               <div
-                className="relative aspect-[4/3] w-full touch-pan-y overflow-hidden bg-slate-100 sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-90"
+                className="relative aspect-4/3 w-full touch-pan-y overflow-hidden bg-slate-100 sm:aspect-16/10 lg:aspect-auto lg:h-full lg:min-h-90"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={(event) =>
                   handleTouchEnd(
@@ -193,7 +193,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                     </span>
 
                     {activity.activityImage.length > 1 && (
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/25 to-transparent" />
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/25 to-transparent" />
                     )}
 
                     {activity.activityImage.length > 1 && (
@@ -225,7 +225,6 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                           transition
                           hover:bg-white
                           focus-visible:outline
-                          focus-visible:outline-2
                           focus-visible:outline-offset-2
                           focus-visible:outline-white
                           sm:left-4
@@ -262,7 +261,6 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                           backdrop-blur-sm
                           transition
                           hover:bg-white
-                          focus-visible:outline
                           focus-visible:outline-2
                           focus-visible:outline-offset-2
                           focus-visible:outline-white

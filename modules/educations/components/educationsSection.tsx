@@ -12,10 +12,10 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
   return (
     <section className="w-full bg-linear-to-b  px-4 py-12 sm:py-16">
       <div className="flex flex-col items-center text-center">
-        <span className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-slate-400 sm:text-base">
+        <span className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-[#3b302675] sm:text-base">
           Education
         </span>
-        <h1 className="text-3xl font-bold text-slate-800 sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-[65px]">
+        <h1 className="text-3xl font-bold text-[#3b3026] sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl xl:text-[65px]">
           ประวัติการศึกษา
         </h1>
         <div className="mt-4 h-1 w-20 rounded-full bg-linear-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
@@ -31,8 +31,8 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
           }}
         >
           <div className="grid grid-cols-1 items-center gap-8 p-6 sm:p-8 md:grid-cols-[200px_1fr] md:gap-10 md:p-10 lg:p-12">
-            <div className="order-1 flex justify-center md:order-none">
-              <div className="flex h-[130px] w-[130px] items-center justify-center rounded-full bg-slate-50 p-4 shadow-inner ring-1 ring-slate-100 sm:h-[150px] sm:w-[150px] md:h-[170px] md:w-[170px]">
+            <div className="order-1 flex justify-center md:order-0">
+              <div className="flex h-32.5 w-32.5 items-center justify-center rounded-full bg-slate-50 p-4 shadow-inner ring-1 ring-slate-100 sm:h-37.5 sm:w-37.5 md:h-42.5 md:w-42.5">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/5/54/Logo_of_Silpakorn_University.svg"
                   alt={data.institution}
@@ -43,7 +43,7 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
               </div>
             </div>
 
-            <div className="order-2 text-center md:order-none md:text-left">
+            <div className="order-2 text-center md:order-0 md:text-left">
               <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl lg:text-4xl">
                 {data.institution}
               </h2>
@@ -71,12 +71,12 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
                   <span className="font-semibold text-slate-900">
                     เกรดเฉลี่ยสะสม:
                   </span>{" "}
-                  <span className="font-semibold text-blue-600">
+                  <span className="font-semibold text-[#734E30]">
                     {data.gpa}
                   </span>
                 </p>
                 {data.honors && (
-                  <p className="inline-block rounded-full bg-amber-50 px-4 py-1 font-semibold text-amber-600">
+                  <p className="inline-block rounded-full bg-[#8c735d] px-4 py-1 font-semibold text-white">
                     🏅 {data.honors}
                   </p>
                 )}
@@ -90,12 +90,12 @@ const EducationsSection = ({ educationData }: EducationsProps) => {
                   {data.relatedCourses.map((course, idx) => (
                     <span
                       key={idx}
-                      className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 sm:text-base"
+                      className="rounded-full bg-[#f1ebe4] px-3 py-1 text-sm font-medium text-[#734E30] sm:text-base"
                     >
                       {course}
                     </span>
                   ))}
-                  <span className="rounded-full bg-slate-50 px-3 py-1 text-sm font-medium text-slate-400 sm:text-base">
+                  <span className="rounded-full bg-[#f1ebe48e] px-3 py-1 text-sm font-medium text-[#734e3086] sm:text-base">
                     และอื่นๆ
                   </span>
                 </div>

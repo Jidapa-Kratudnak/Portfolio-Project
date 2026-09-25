@@ -28,7 +28,7 @@ const Loading = () => {
     <div
       role="status"
       aria-label="กำลังโหลด"
-      className="fixed inset-0 z-[9999] flex min-h-screen items-center justify-center bg-[#f8f7f2]"
+      className="fixed inset-0 z-9999 flex min-h-screen items-center justify-center bg-[#f8f7f2]"
     >
       <div className="flex flex-col items-center gap-4">
         <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#6c5846]/20 border-t-[#6c5846]" />
