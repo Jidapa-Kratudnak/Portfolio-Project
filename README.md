@@ -13,7 +13,7 @@ I created this project to introduce myself and share my experience, skills, and 
 สามารถเข้าชมเว็บไซต์ได้ที่:
 You can visit my portfolio here:
 
-**[🔗 View My portfolio](https://Demo.com)**
+**[🔗 View My portfolio](https://portfolio-project-cm314fzgn-jidapakratudnaks-projects.vercel.app/)**
 
 ---
 
@@ -30,6 +30,7 @@ You can visit my portfolio here:
 * 🎓 **Education | ประวัติการศึกษา**
 * 🛠️ **Skills | ทักษะและความสามารถ**
 * 💻 **Projects | ประสบการณ์การทำโครงงาน**
+  - รายละเอียดโปนเจค **In Progress | กำลังพัฒนา**
 * 🎯 **Activities & Training | กิจกรรมและการอบรม**
 * 🏢 **Cooperative Education | ประสบการณ์การฝึกสหกิจศึกษา**
 
