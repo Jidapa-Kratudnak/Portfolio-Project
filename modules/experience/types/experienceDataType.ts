@@ -1,4 +1,7 @@
-
+type image = {
+  imageName: string;
+  imagePath: string;
+}
 
 
 export type ExperienceData = {
@@ -11,4 +14,5 @@ export type ExperienceData = {
   endDate: string;
   description: string[];
   certificateLink: string;
+  images  : image[];
 };

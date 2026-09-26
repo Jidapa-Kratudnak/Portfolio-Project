@@ -14,9 +14,10 @@ export const activitiesData: ActivitiesDataType[] = [
     activityDescription:
       "แบ่งปันความรู้พื้นฐานเรื่องการทำงานของ Cookie, Session Management และแนวทางการตั้งค่าความปลอดภัยของเว็บไซต์",
     activityImage: [
-      "https://drive.google.com/uc?export=view&id=1CmniWOPXH335n0AgAuW-kk-lNu0oZ38b",
-      "https://drive.google.com/uc?export=view&id=1Oal1qWQ9jz3RCV_C2w4sB-QPisLDIJfq",
-      "https://drive.google.com/uc?export=view&id=1Mx0jPZHRvoYpXjjBgIekIQ5hHzJpvLBi"
+      "/images/knowledgeSharing/ks01.jpg",
+      "/images/knowledgeSharing/ks02.jpg",
+      "/images/knowledgeSharing/ks03.jpg",
+      "/images/knowledgeSharing/ks04.jpg",
     ],
     activityStartDate: new Date("2026-02-14"),
     activityEndDate: null,

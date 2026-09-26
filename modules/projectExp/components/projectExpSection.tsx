@@ -19,7 +19,7 @@ const ProjectExpSection = ({projectExpData} : ProjectExpProps) => {
           <div className="mt-4 h-1 w-20 rounded-full bg-linear-to-r from-[#8b6c52] to-[#604d3b] sm:w-28" />
         </div>
 
-        <div className="mx-auto mt-10 w-full max-w-5xl sm:mt-14">
+        <div className="mx-auto mt-10 w-full max-w-4xl sm:mt-14">
           <ProjectExpCard projectExpData={projectExpData} />
         </div>
       </section>

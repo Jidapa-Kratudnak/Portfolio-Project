@@ -14,6 +14,16 @@ export const experienceData: ExperienceData[] = [
       "พัฒนาและเชื่อมต่อระบบด้วย REST API พร้อมการทดสอบระบบ",
       "ทำงานร่วมกับทีมตามแนวทาง Agile/Scrum",
     ],
-    certificateLink: "https://drive.google.com/file/d/1dmaQyODqQLL_3q8s2y8eFjPMaKAZm9o8/view?usp=sharing",
+    certificateLink: "/images/coop/certificate.png",
+    images: [
+      {
+        imageName: "",
+        imagePath: "/images/coop/coop1.jpg",
+      },
+      {
+        imageName: "",
+        imagePath: "/images/coop/coop2.jpg",
+      },
+    ]
   },
 ];

@@ -19,7 +19,7 @@ const Header = () => {
           aria-label="เปิดเมนู"
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((open) => !open)}
-          className="rounded-md p-2 lg:hidden"
+          className="rounded-md p-2 xl:hidden"
         >
           {isMenuOpen ? (
             <X className="h-6 w-6" />
@@ -30,7 +30,7 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="overflow-hidden lg:hidden">
+        <div className="overflow-hidden xl:hidden">
           <div className="mt-3 border-t border-white/20 px-4 pt-3">
             <HeaderAnchor mobile />
           </div>

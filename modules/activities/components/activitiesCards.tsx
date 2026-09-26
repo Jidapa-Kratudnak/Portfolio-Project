@@ -28,9 +28,11 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
   const [currentImage, setCurrentImage] = useState<Record<string, number>>(
     {},
   );
+
   const [slideDirection, setSlideDirection] = useState<
     Record<string, "left" | "right">
   >({});
+
   const [zoomedKey, setZoomedKey] = useState<string | null>(null);
 
   const touchStartX = useRef<number | null>(null);
@@ -109,7 +111,8 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
   ) => {
     if (touchStartX.current === null || totalImages <= 1) return;
 
-    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+    const deltaX =
+      event.changedTouches[0].clientX - touchStartX.current;
 
     if (deltaX > SWIPE_THRESHOLD) {
       previousImage(activityKey, totalImages);
@@ -121,7 +124,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-8 sm:gap-10 lg:gap-12">
+    <div className="flex flex-col gap-8 sm:gap-10 xl:gap-12">
       {activitiesData.map((activity, index) => {
         const activityKey = `${activity.activityName}-${index}`;
         const imageIndex = currentImage[activityKey] ?? 0;
@@ -130,17 +133,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
         return (
           <Card
             key={activityKey}
-            className="
-              h-auto!
-              overflow-hidden!
-              rounded-[28px]!
-              border-0!
-              shadow-lg!
-              transition-shadow!
-              duration-300!
-              hover:shadow-2xl!
-              sm:rounded-4xl!
-            "
+            className="h-auto! overflow-hidden! rounded-[40px]! border-0! shadow-xl! transition-shadow! duration-300! hover:shadow-2xl! sm:rounded-[50px]!"
             styles={{
               body: {
                 height: "100%",
@@ -148,9 +141,9 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
               },
             }}
           >
-            <div className="grid h-full grid-cols-1 lg:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
+            <div className="grid h-full grid-cols-1 xl:grid-cols-[minmax(0,44%)_minmax(0,56%)]">
               <div
-                className="relative aspect-4/3 w-full touch-pan-y overflow-hidden bg-slate-100 sm:aspect-16/10 lg:aspect-auto lg:h-full lg:min-h-90"
+                className="relative aspect-4/3 w-full touch-pan-y overflow-hidden bg-slate-100 sm:aspect-16/10 xl:aspect-auto xl:h-full xl:min-h-90"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={(event) =>
                   handleTouchEnd(
@@ -173,7 +166,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                         src={activity.activityImage[imageIndex]}
                         alt={`${activity.activityName} ${imageIndex + 1}`}
                         fill
-                        sizes="(min-width: 1024px) 44vw, 100vw"
+                        sizes="(min-width: 1280px) 44vw, 100vw"
                         className={`
                           object-cover
                           ${
@@ -216,31 +209,7 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                           )
                         }
                         aria-label="Previous image"
-                        className="
-                          absolute
-                          left-3
-                          top-1/2
-                          z-10
-                          flex
-                          h-9
-                          w-9
-                          -translate-y-1/2
-                          items-center
-                          justify-center
-                          rounded-full
-                          bg-white/90
-                          text-black
-                          shadow-md
-                          backdrop-blur-sm
-                          transition
-                          hover:bg-white
-                          focus-visible:outline
-                          focus-visible:outline-offset-2
-                          focus-visible:outline-white
-                          sm:left-4
-                          sm:h-10
-                          sm:w-10
-                        "
+                        className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md backdrop-blur-sm transition hover:bg-white focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white sm:left-4 sm:h-10 sm:w-10"
                       >
                         <span className="text-2xl leading-none">‹</span>
                       </button>
@@ -250,34 +219,13 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                       <button
                         type="button"
                         onClick={() =>
-                          nextImage(activityKey, activity.activityImage.length)
+                          nextImage(
+                            activityKey,
+                            activity.activityImage.length,
+                          )
                         }
                         aria-label="Next image"
-                        className="
-                          absolute
-                          right-3
-                          top-1/2
-                          z-10
-                          flex
-                          h-9
-                          w-9
-                          -translate-y-1/2
-                          items-center
-                          justify-center
-                          rounded-full
-                          bg-white/90
-                          text-black
-                          shadow-md
-                          backdrop-blur-sm
-                          transition
-                          hover:bg-white
-                          focus-visible:outline-2
-                          focus-visible:outline-offset-2
-                          focus-visible:outline-white
-                          sm:right-4
-                          sm:h-10
-                          sm:w-10
-                        "
+                        className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md backdrop-blur-sm transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-4 sm:h-10 sm:w-10"
                       >
                         <span className="text-2xl leading-none">›</span>
                       </button>
@@ -290,7 +238,11 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                             key={index}
                             type="button"
                             onClick={() =>
-                              goToImage(activityKey, index, imageIndex)
+                              goToImage(
+                                activityKey,
+                                index,
+                                imageIndex,
+                              )
                             }
                             aria-label={`Go to image ${index + 1}`}
                             className={`
@@ -318,8 +270,8 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                 )}
               </div>
 
-              <div className="relative flex min-h-0 flex-col justify-center gap-3 p-6 pt-16 sm:gap-4 sm:p-8 sm:pt-16 lg:p-10 lg:pt-16">
-                <span className="absolute right-6 top-6 text-sm font-medium text-[#6c5846] sm:right-8 sm:top-8 sm:text-base lg:right-10 lg:top-10">
+              <div className="relative flex min-h-0 flex-col justify-center gap-3 p-6 pt-16 sm:gap-4 sm:p-8 sm:pt-16 xl:p-10 xl:pt-16">
+                <span className="absolute right-6 top-6 text-sm font-medium text-[#6c5846] sm:right-8 sm:top-8 sm:text-base xl:right-10 xl:top-10">
                   {activity.activityStartDate ? (
                     <>
                       {dayjs(activity.activityStartDate)
@@ -340,12 +292,12 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                   )}
                 </span>
 
-                <h2 className="text-xl font-bold leading-snug text-slate-800 sm:text-2xl lg:text-2xl">
+                <h2 className="text-xl font-bold leading-snug text-slate-800 sm:text-2xl">
                   {activity.activityName}
                 </h2>
 
                 <div>
-                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base lg:text-lg">
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base xl:text-lg">
                     {activity.activityDescription
                       .split("\n")
                       .map((desc, index) => (
@@ -393,40 +345,32 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                 </button>
 
                 <div
-                  className="relative flex h-[82dvh] w-[82vw] max-w-[82vw] flex-col items-center justify-center gap-3"
+                  className="relative flex h-[82dvh] w-[92vw] max-w-[1200px] flex-col items-center justify-center gap-3"
                   onClick={(event) => event.stopPropagation()}
                   onTouchStart={handleTouchStart}
                   onTouchEnd={(event) =>
                     handleTouchEnd(event, zoomedKey, total)
                   }
                 >
-                  {activity.activityImage.length === 0 ||
-                  activity.activityImage[0] === null ? (
-                    <div className="flex h-full w-full items-center justify-center">
-                      <ImageOff size={48} className="text-white" />
-                      <span className="ml-2 text-white">
-                        ไม่มีรูปภาพที่จะแสดง
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="relative flex h-[72dvh] w-[80vw] items-center justify-center">
-                      <Image
-                        src={activity.activityImage[imageIndex]}
-                        alt={`${activity.activityName} ${imageIndex + 1}`}
-                        width={1600}
-                        height={1200}
-                        sizes="80vw"
-                        className="max-h-auto max-w-auto object-contain"
-                        priority={false}
-                      />
-                    </div>
-                  )}
+                  <div className="relative flex h-[72dvh] w-full items-center justify-center">
+                    <Image
+                      src={activity.activityImage[imageIndex]}
+                      alt={`${activity.activityName} ${imageIndex + 1}`}
+                      width={1600}
+                      height={1200}
+                      sizes="92vw"
+                      className="max-h-full max-w-full object-contain"
+                      priority={false}
+                    />
+                  </div>
 
                   {total > 1 && (
                     <>
                       <button
                         type="button"
-                        onClick={() => previousImage(zoomedKey, total)}
+                        onClick={() =>
+                          previousImage(zoomedKey, total)
+                        }
                         aria-label="Previous image"
                         className="absolute left-0 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:bg-white sm:left-2"
                       >
@@ -435,7 +379,9 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
 
                       <button
                         type="button"
-                        onClick={() => nextImage(zoomedKey, total)}
+                        onClick={() =>
+                          nextImage(zoomedKey, total)
+                        }
                         aria-label="Next image"
                         className="absolute right-0 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:bg-white sm:right-2"
                       >
@@ -448,7 +394,11 @@ const ActivitiesCards = ({ activitiesData }: ActivitiesCardsProps) => {
                             key={index}
                             type="button"
                             onClick={() =>
-                              goToImage(zoomedKey, index, imageIndex)
+                              goToImage(
+                                zoomedKey,
+                                index,
+                                imageIndex,
+                              )
                             }
                             aria-label={`Go to image ${index + 1}`}
                             className={`rounded-full transition-all duration-200 ${

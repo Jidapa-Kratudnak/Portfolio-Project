@@ -5,39 +5,39 @@ export const ProjectExpData: ProjectExpDataType[] = [
     images: [
       {
         imageDescription: "แม่ค้า: หน้าเมนูหลัก",
-        imageURL: "https://drive.google.com/uc?export=view&id=1mSswTMj2DdMC7MtCpK2LnD2rbW8mVcwY"
+        imageURL: "/images/finalProject/sellerHome.png",
       },
       {
         imageDescription: "แม่ค้า: หน้าจัดการคำสั่งซื้อ",
-        imageURL: "https://drive.google.com/uc?export=view&id=1Q-Fl-kkjjfAnFSSwVQrTwST_Y7nshA7j"
+        imageURL: "/images/finalProject/sellerOrdersManagement.png",
       },
       {
         imageDescription: "แม่ค้า: หน้าจัดการสินค้า",
-        imageURL: "https://drive.google.com/uc?export=view&id=1q1mCRPf_ZpM7rEUzOFVC9d1r0gQ8uctL"
+        imageURL: "/images/finalProject/sellerProductsManagement.png"
       },
       {
-        imageDescription: "แม่ค้า: หน้าสรุปยอดขายสินค้า",
-        imageURL: "https://drive.google.com/uc?export=view&id=1tzvMJgrIv3FmAR9A06VuxfW70odZ-1aG"
+        imageDescription: "แม่ค้า: หน้า Dashboard สรุปยอดขาย",
+        imageURL: "/images/finalProject/sellerDashboard.png"
       },
       {
         imageDescription: "ลูกค้า: หน้าสินค้าทั้งหมด",
-        imageURL: "https://drive.google.com/uc?export=view&id=1VAlFe6qNvFGEVDHT4_--h8JM9uxJtWLd"
+        imageURL: "/images/finalProject/customerHome.png"
       },
       {
         imageDescription: "ลูกค้า: หน้าบัญชีผู้ใช้",
-        imageURL: "https://drive.google.com/uc?export=view&id=1a1xUrdS9iLrGxLP6E63sJV8PnXoNhqkC"
+        imageURL: "/images/finalProject/customerAccount.png"
       },
       {
         imageDescription: "ลูกค้า: หน้ารถเข็นของฉัน",
-        imageURL: "https://drive.google.com/uc?export=view&id=1IFAxT2wlW5vQwpR8cG-ZIm0Qx5fSKxJI"
+        imageURL: "/images/finalProject/customerCart.png"
       },
       {
         imageDescription: "ลูกค้า: หน้าตรวจสอบคำสั่งซื้อ",
-        imageURL: "https://drive.google.com/uc?export=view&id=1Bm2JtqwxCEbIgktRFZrgVEv4bzaL-dFX"
+        imageURL: "/images/finalProject/customerOrders.png"
       },
       {
         imageDescription: "ลูกค้า: หน้า Checkout",
-        imageURL: "https://drive.google.com/uc?export=view&id=1x8wbtTytt8mCI1YNTDm1IBXvJ6AfiRGs"
+        imageURL: "/images/finalProject/customerCheckout.png"
       }
     ],
     THprojectName:
