@@ -26,7 +26,6 @@ type CarouselImage = {
 
 type ImageCarouselProps = {
   images: CarouselImage[];
-  className?: string;
   priority?: boolean;
 };
 
@@ -34,7 +33,6 @@ const SWIPE_THRESHOLD = 40;
 
 const ImagesCarousel = ({
   images,
-  className="",
   priority = false,
 }: ImageCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
