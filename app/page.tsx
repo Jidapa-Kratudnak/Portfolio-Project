@@ -15,6 +15,7 @@ import SkillsSection from "@/modules/skills/components/skillsSection";
 import { experienceData } from "@/modules/experience/data/experienceData";
 import ExperienceSection from "@/modules/experience/components/experienceSection";
 import HeaderAnchor from "@/components/headerAnchor";
+import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -71,6 +72,21 @@ export default function Home() {
             <ExperienceSection experienceData={experienceData} />
           </section>
           </div>
+
+
+          <div className="mt-6 flex justify-end">
+            <a
+              href="https://github.com/Jidapa-Kratudnak/Portfolio-Project"
+              aria-label="ดู Repository ของโปรเจกต์นี้บน GitHub"
+              className="flex items-center gap-2 text-right text-sm font-medium text-[#5e6153b7] transition-colors hover:text-[#3a2f25] sm:text-base"
+            >
+              <span className="underline underline-offset-4">
+                ตรวจสอบ Repository ของโปรเจกต์นี้
+              </span>
+              <FaGithub size={22} />
+            </a>
+          </div>
+
         </div>
       </main>
 

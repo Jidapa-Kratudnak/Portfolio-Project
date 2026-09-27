@@ -1,18 +1,24 @@
+import { Divider } from "antd";
+
 const Footer = () => {
   return (
     <footer className="mt-20 bg-[#F1EBE4] py-4 sm:mt-32 md:mt-40 lg:mt-50">
-      <div className="container mx-auto px-4 text-center sm:px-6 md:px-8">
-        <p className="text-sm text-[#22251A] sm:text-base">
-          &copy; 2026 Jidapa_K. All rights reserved..
-        </p>
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="mt-6 text-center">
 
-        <p className="mt-1 text-sm text-[#22251A] sm:text-base">
-          ไม่อนุญาตให้นำข้อมูลไปใช้ซ้ำ ดัดแปลง หรือเผยแพร่โดยไม่ได้รับอนุญาต
-        </p>
+          <p className="text-sm text-[#22251A]">
+            &copy; 2026 Jidapa_K. All rights reserved.
+          </p>
 
-        <p className="mt-1 text-sm text-[#22251A] sm:text-base">
-          Please do not reuse, modify, or redistribute this content without permission.
-        </p>
+          <p className="mt-1 text-sm text-[#22251A]">
+            ไม่อนุญาตให้นำข้อมูลไปใช้ซ้ำ ดัดแปลง หรือเผยแพร่โดยไม่ได้รับอนุญาต
+          </p>
+
+          <p className="mt-1 text-sm text-[#22251A]">
+            Please do not reuse, modify, or redistribute this content without
+            permission.
+          </p>
+        </div>
       </div>
     </footer>
   );

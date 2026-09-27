@@ -1,8 +1,5 @@
-type image = {
-  imageName: string;
-  imagePath: string;
-}
 
+import {Image} from "@/components/types/image";
 
 export type ExperienceData = {
   id: string;
@@ -14,5 +11,5 @@ export type ExperienceData = {
   endDate: string;
   description: string[];
   certificateLink: string;
-  images  : image[];
+  images  : Image[];
 };

@@ -28,21 +28,21 @@ const SkillsCard = ({ skillsData }: SkillsCardProps) => {
               </h2>
 
               {isLanguages ? (
-                <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="flex flex-col mt-3 gap-3 sm:gap-4">
                   {skillGroup.skills.map((skill) => {
                     const Icon = skill.skillImage;
 
                     return (
                       <div
                         key={skill.id}
-                        className="flex items-center gap-4 rounded-full p-3 transition-transform duration-200 hover:-translate-y-1 sm:p-4"
+                        className="flex items-center gap-4 rounded-full transition-transform duration-200 hover:-translate-y-1 mt-3"
                       >
                         <Icon
                           size={30}
                           className="shrink-0 text-[#22251A]"
                         />
 
-                        <span className="text-base font-medium text-slate-700 sm:text-lg">
+                        <span className="text-base font-medium text-slate-700 sm:text-lg ">
                           {skill.skillName}
                         </span>
                       </div>

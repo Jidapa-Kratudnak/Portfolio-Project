@@ -1,10 +1,7 @@
-type image = {
-  imageURL: string;
-  imageDescription: string;
-}
+import { Image } from "@/components/types/image";
 
 export type ProjectExpDataType = {
-  images?: image[];
+  images?: Image[];
   THprojectName: string;
   ENprojectName: string;
   description: string[];

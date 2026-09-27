@@ -4,40 +4,40 @@ export const ProjectExpData: ProjectExpDataType[] = [
   {
     images: [
       {
-        imageDescription: "แม่ค้า: หน้าเมนูหลัก",
-        imageURL: "/images/finalProject/sellerHome.png",
+        imageName: "แม่ค้า: หน้าเมนูหลัก",
+        imagePath: "/images/finalProject/sellerHome.png",
       },
       {
-        imageDescription: "แม่ค้า: หน้าจัดการคำสั่งซื้อ",
-        imageURL: "/images/finalProject/sellerOrdersManagement.png",
+        imageName: "แม่ค้า: หน้าจัดการคำสั่งซื้อ",
+      imagePath: "/images/finalProject/sellerOrdersManagement.png",
       },
       {
-        imageDescription: "แม่ค้า: หน้าจัดการสินค้า",
-        imageURL: "/images/finalProject/sellerProductsManagement.png"
+        imageName: "แม่ค้า: หน้าจัดการสินค้า",
+        imagePath: "/images/finalProject/sellerProductsManagement.png"
       },
       {
-        imageDescription: "แม่ค้า: หน้า Dashboard สรุปยอดขาย",
-        imageURL: "/images/finalProject/sellerDashboard.png"
+        imageName: "แม่ค้า: หน้า Dashboard สรุปยอดขาย",
+        imagePath: "/images/finalProject/sellerDashboard.png"
       },
       {
-        imageDescription: "ลูกค้า: หน้าสินค้าทั้งหมด",
-        imageURL: "/images/finalProject/customerHome.png"
+        imageName: "ลูกค้า: หน้าสินค้าทั้งหมด",
+        imagePath: "/images/finalProject/customerHome.png"
       },
       {
-        imageDescription: "ลูกค้า: หน้าบัญชีผู้ใช้",
-        imageURL: "/images/finalProject/customerAccount.png"
+        imageName: "ลูกค้า: หน้าบัญชีผู้ใช้",
+        imagePath: "/images/finalProject/customerAccount.png"
       },
       {
-        imageDescription: "ลูกค้า: หน้ารถเข็นของฉัน",
-        imageURL: "/images/finalProject/customerCart.png"
+        imageName: "ลูกค้า: หน้ารถเข็นของฉัน",
+        imagePath: "/images/finalProject/customerCart.png"
       },
       {
-        imageDescription: "ลูกค้า: หน้าตรวจสอบคำสั่งซื้อ",
-        imageURL: "/images/finalProject/customerOrders.png"
+        imageName: "ลูกค้า: หน้าตรวจสอบคำสั่งซื้อ",
+        imagePath: "/images/finalProject/customerOrders.png"
       },
       {
-        imageDescription: "ลูกค้า: หน้า Checkout",
-        imageURL: "/images/finalProject/customerCheckout.png"
+        imageName: "ลูกค้า: หน้า Checkout",
+        imagePath: "/images/finalProject/customerCheckout.png"
       }
     ],
     THprojectName:
