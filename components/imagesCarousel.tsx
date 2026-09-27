@@ -14,9 +14,9 @@ import Image from "next/image";
 import {
   useCallback,
   useEffect,
-  useRef,
   useState,
-  type TouchEvent,
+  type WheelEvent,
+  type PointerEvent,
 } from "react";
 
 type CarouselImage = {
@@ -29,7 +29,6 @@ type ImageCarouselProps = {
   priority?: boolean;
 };
 
-const SWIPE_THRESHOLD = 40;
 
 const ImagesCarousel = ({
   images,
@@ -38,47 +37,49 @@ const ImagesCarousel = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
-
-  const touchStartX = useRef<number | null>(null);
-  const lastImageTap = useRef(0);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const hasImages = images.length > 0;
   const hasMultipleImages = images.length > 1;
 
   const nextImage = useCallback(() => {
     if (!hasMultipleImages) return;
-
     setCurrentIndex((previous) => (previous + 1) % images.length);
     setZoom(1);
+    setPosition({ x: 0, y: 0 });
   }, [hasMultipleImages, images.length]);
 
   const previousImage = useCallback(() => {
     if (!hasMultipleImages) return;
-
     setCurrentIndex(
       (previous) => (previous - 1 + images.length) % images.length,
     );
     setZoom(1);
+    setPosition({ x: 0, y: 0 });
   }, [hasMultipleImages, images.length]);
 
   const goToImage = useCallback(
     (index: number) => {
       if (index < 0 || index >= images.length) return;
-
       setCurrentIndex(index);
       setZoom(1);
+      setPosition({ x: 0, y: 0 });
     },
     [images.length],
   );
 
   const openPreview = useCallback(() => {
     setZoom(1);
+    setPosition({ x: 0, y: 0 });
     setPreviewOpen(true);
   }, []);
 
   const closePreview = useCallback(() => {
     setPreviewOpen(false);
     setZoom(1);
+    setPosition({ x: 0, y: 0 });
   }, []);
 
   const zoomIn = useCallback(() => {
@@ -86,59 +87,50 @@ const ImagesCarousel = ({
   }, []);
 
   const zoomOut = useCallback(() => {
-    setZoom((previous) => Math.max(previous - 0.25, 0.5));
+    setZoom((previous) => {
+      const newZoom = Math.max(previous - 0.25, 0.5);
+      if (newZoom <= 1) setPosition({ x: 0, y: 0 });
+      return newZoom;
+    });
   }, []);
 
   const resetZoom = useCallback(() => {
     setZoom(1);
+    setPosition({ x: 0, y: 0 });
   }, []);
 
-  const toggleZoom = useCallback(() => {
-    setZoom((previous) => (previous === 1 ? 2 : 1));
+  const handleWheelZoom = useCallback((event: WheelEvent<HTMLDivElement>) => {
+    if (!event.ctrlKey) return;
+    event.preventDefault();
+    setZoom((previous) => {
+      const direction = event.deltaY < 0 ? 0.15 : -0.15;
+      const newZoom = Math.min(Math.max(previous + direction, 0.5), 3);
+      if (newZoom <= 1) setPosition({ x: 0, y: 0 });
+      return newZoom;
+    });
   }, []);
 
-  const handleTouchStart = useCallback((event: TouchEvent) => {
-    touchStartX.current = event.touches[0].clientX;
+  const handlePointerDown = useCallback((e: PointerEvent<HTMLImageElement>) => {
+    if (zoom <= 1) return;
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }, [zoom, position]);
+
+  const handlePointerMove = useCallback((e: PointerEvent<HTMLImageElement>) => {
+    if (!isDragging) return;
+    setPosition({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
+  }, [isDragging, dragStart]);
+
+  const handlePointerUp = useCallback((e: PointerEvent<HTMLImageElement>) => {
+    setIsDragging(false);
+    e.currentTarget.releasePointerCapture(e.pointerId);
   }, []);
 
-  const handleTouchEnd = useCallback(
-    (event: TouchEvent) => {
-      if (touchStartX.current === null || !hasMultipleImages) return;
-
-      const deltaX = event.changedTouches[0].clientX - touchStartX.current;
-
-      if (deltaX > SWIPE_THRESHOLD) {
-        previousImage();
-      } else if (deltaX < -SWIPE_THRESHOLD) {
-        nextImage();
-      }
-
-      touchStartX.current = null;
-    },
-    [hasMultipleImages, nextImage, previousImage],
-  );
-
-  const handleImageTap = useCallback(
-    (event: TouchEvent<HTMLImageElement>) => {
-      const currentTime = Date.now();
-      const timeSinceLastTap = currentTime - lastImageTap.current;
-
-      if (timeSinceLastTap < 350) {
-        event.stopPropagation();
-        toggleZoom();
-        lastImageTap.current = 0;
-        return;
-      }
-
-      lastImageTap.current = currentTime;
-    },
-    [toggleZoom],
-  );
   useEffect(() => {
     if (!previewOpen) return;
 
     const previousOverflow = document.body.style.overflow;
-
     document.body.style.overflow = "hidden";
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -146,12 +138,10 @@ const ImagesCarousel = ({
         closePreview();
         return;
       }
-
       if (event.key === "ArrowLeft" && hasMultipleImages) {
         previousImage();
         return;
       }
-
       if (event.key === "ArrowRight" && hasMultipleImages) {
         nextImage();
       }
@@ -163,7 +153,13 @@ const ImagesCarousel = ({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [previewOpen, hasMultipleImages, closePreview, previousImage, nextImage]);
+  }, [
+    previewOpen,
+    hasMultipleImages,
+    closePreview,
+    previousImage,
+    nextImage,
+  ]);
 
   if (!hasImages) {
     return (
@@ -181,11 +177,7 @@ const ImagesCarousel = ({
 
   return (
     <>
-      <div
-        className="relative aspect-4/3 w-full overflow-hidden rounded-[26px] bg-slate-100 shadow-md sm:aspect-16/10 sm:rounded-[30px]"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="relative aspect-4/3 w-full overflow-hidden rounded-[26px] bg-slate-100 shadow-md sm:aspect-16/10 sm:rounded-[30px]">
         <button
           type="button"
           aria-label="เปิดดูรูปภาพ"
@@ -296,9 +288,12 @@ const ImagesCarousel = ({
       >
         <div
           className="fixed inset-0 flex h-dvh w-screen items-center justify-center overflow-hidden bg-black"
-          onClick={closePreview}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              closePreview();
+            }
+          }}
+          onWheel={handleWheelZoom}
         >
           <button
             type="button"
@@ -337,24 +332,38 @@ const ImagesCarousel = ({
             </>
           )}
 
-          <div className="flex h-dvh w-screen items-center justify-center overflow-auto overscroll-contain px-12 py-16">
+          <div
+            className="flex h-dvh w-screen items-center justify-center overflow-hidden px-12 py-16"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                closePreview();
+              }
+            }}
+          >
             <Image
+              key={`${currentImage.imagePath}-${currentIndex}`}
               src={currentImage.imagePath}
               alt={currentImage.imageName}
               width={1600}
               height={1200}
               draggable={false}
-              onClick={(event) => event.stopPropagation()}
-              onTouchEnd={handleImageTap}
-              onDoubleClick={(event) => {
-                event.stopPropagation();
-                toggleZoom();
-              }}
-              className="h-auto max-h-[calc(100dvh-9rem)] w-auto max-w-[calc(100vw-6rem)] touch-manipulation select-none object-contain transition-transform duration-200"
+              priority
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              className="h-auto max-h-[calc(100dvh-9rem)] w-auto max-w-[calc(100vw-6rem)] select-none object-contain"
               style={{
-                transform: `scale(${zoom})`,
+                transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default",
+                touchAction: zoom > 1 ? "none" : "auto",
+                transition: isDragging ? "none" : "transform 0.15s ease-out",
               }}
             />
+          </div>
+
+          <div className="pointer-events-none absolute left-1/2 top-5 z-50 max-w-[70%] -translate-x-1/2 truncate rounded-full border border-white/20 bg-black/70 px-4 py-1.5 text-center text-xs text-white shadow-lg backdrop-blur-md sm:top-6 sm:max-w-[60%] sm:text-sm">
+            {currentImage.imageName}
           </div>
 
           <div
@@ -394,13 +403,9 @@ const ImagesCarousel = ({
 
           {hasMultipleImages && (
             <div className="absolute bottom-20 left-1/2 z-40 -translate-x-1/2 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-xs text-white/80 backdrop-blur-sm">
-              {currentIndex + 1} / {images.length}
+              {safeCurrentIndex + 1} / {images.length}
             </div>
           )}
-
-          <div className="pointer-events-none absolute bottom-5 left-1/2 z-30 hidden max-w-[40%] -translate-x-1/2 truncate text-xs text-white/60 sm:block">
-            {currentImage.imageName}
-          </div>
         </div>
       </Modal>
     </>

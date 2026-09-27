@@ -167,7 +167,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                         {project.technologies.map((technology) => (
                           <span
                             key={technology}
-                            className="rounded-full bg-slate-100 px-4 py-2 text-sm text-slate-700"
+                            className="rounded-full bg-[#f1ebe4] px-3 py-1 text-sm font-medium text-[#734E30] sm:text-base"
                           >
                             {technology}
                           </span>
@@ -208,7 +208,7 @@ const ProjectExpCard = ({ projectExpData }: ProjectExpCardProps) => {
                         {project.language.map((language) => (
                           <span
                             key={language}
-                            className="rounded-full bg-slate-100 px-4 py-2 text-sm text-slate-700"
+                            className="rounded-full bg-[#f1ebe4] px-3 py-1 text-sm font-medium text-[#734E30] sm:text-base"
                           >
                             {language}
                           </span>
