@@ -26,11 +26,17 @@ type CarouselImage = {
 
 type ImageCarouselProps = {
   images: CarouselImage[];
+  className?: string;
+  priority?: boolean;
 };
 
 const SWIPE_THRESHOLD = 40;
 
-const ImagesCarousel = ({ images }: ImageCarouselProps) => {
+const ImagesCarousel = ({
+  images,
+  className="",
+  priority = false,
+}: ImageCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
@@ -194,8 +200,9 @@ const ImagesCarousel = ({ images }: ImageCarouselProps) => {
           src={currentImage.imagePath}
           alt={currentImage.imageName}
           fill
+          loading={priority ? "eager" : "lazy"}
           sizes="(min-width: 1280px) 50vw, 100vw"
-          className="object-contain transition-transform duration-300"
+          className="object-cover transition-transform duration-300"
         />
 
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-black/10" />

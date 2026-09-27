@@ -73,13 +73,13 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                   color: "#6c5846",
                   content: (
                     <>
-                    <div className="mb-5 flex items-center gap-2 text-sm font-medium text-[#6c5846] sm:mb-6 sm:text-base">
-      <CalendarDays size={17} className="shrink-0" />
+                      <div className="mb-5 flex items-center gap-2 text-sm font-medium text-[#6c5846] sm:mb-6 sm:text-base">
+                        <CalendarDays size={17} className="shrink-0" />
 
-      <span>
-        {experience.startDate} - {experience.endDate}
-      </span>
-    </div>
+                        <span>
+                          {experience.startDate} - {experience.endDate}
+                        </span>
+                      </div>
                       <Card
                         key={experience.id}
                         className="mb-6! overflow-hidden! rounded-4xl! border-0! shadow-lg! transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl! sm:mb-8! sm:rounded-[40px]!"
@@ -98,6 +98,7 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                             <div className="w-full max-w-full ">
                               <ImagesCarousel
                                 images={experience.images ?? []}
+                                priority
                               />
                             </div>
                           </div>
