@@ -30,10 +30,10 @@ You can visit my portfolio here:
 * 🎓 **Education | ประวัติการศึกษา**
 * 🛠️ **Skills | ทักษะและความสามารถ**
 * 💻 **Projects | ประสบการณ์การทำโครงงาน**
-  - รายละเอียดโปนเจค **In Progress | กำลังพัฒนา**
 * 🎯 **Activities & Training | กิจกรรมและการอบรม**
 * 🏢 **Cooperative Education | ประสบการณ์การฝึกสหกิจศึกษา**
 
+** Demo ของ Final Project ยังไม่สามารถใช้งานได้ในขณะนี้ เนื่องจากข้อจำกัดของบริการ Free Tier**
 
 ---
 
