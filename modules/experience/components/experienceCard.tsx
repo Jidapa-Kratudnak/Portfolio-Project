@@ -134,7 +134,7 @@ const ExperienceCard = ({ experienceData }: ExperienceCardProps) => {
                                     </span>
                                   </p>
 
-                                  <p className="mt-1.5 flex items-start gap-2 text-sm text-slate-500 sm:text-base">
+                                  <p className="mt-1.5 flex items-start gap-2 text-sm text-[#6c5846] sm:text-base">
                                     <MapPin
                                       size={18}
                                       className="mt-0.5 shrink-0"
