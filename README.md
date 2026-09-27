@@ -17,12 +17,6 @@ You can visit my portfolio here:
 
 ---
 
-## ✨ Features | ฟีเจอร์
-
-🚧 **In Progress | กำลังพัฒนา**
-
----
-
 ## 📋 เนื้อหาภายในเว็บไซต์
 
 * 👤 **Personal Information | ข้อมูลส่วนตัว**
