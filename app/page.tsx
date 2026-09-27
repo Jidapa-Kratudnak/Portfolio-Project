@@ -31,48 +31,49 @@ export default function Home() {
             <Welcome />
           </section>
 
-          <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%] ">
-            <section id="about">
+       
+            <section id="about">  
               <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-              <AboutMeSection aboutMeData={aboutMeData} />
+              <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%]">
+                <AboutMeSection aboutMeData={aboutMeData} />
+              </div>
             </section>
-          </div>
 
-          <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%] ">
           <section id="education">
             <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-            <EducationsSection educationData={educationData} />
+            <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%]">
+              <EducationsSection educationData={educationData} />
+            </div>
           </section>
-          </div>
 
-          <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%] ">
             <section id="projects">
               <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+              <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%]">
+
               <ProjectExpSection projectExpData={ProjectExpData} />
+              </div>
             </section>
-          </div>
 
-          <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%] ">
-          <section id="activities">
-            <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-            <ActivitiesSection activitiesData={activitiesData} />
-          </section>
-          </div>
+            <section id="activities">
+              <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+              <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%]">
+              <ActivitiesSection activitiesData={activitiesData} />
+              </div>
+            </section>
 
-          <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%] ">
-          <section id="skills">
-            <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-            <SkillsSection skillsData={skillsData} />
-          </section>
-          </div>
+            <section id="skills">
+              <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+              <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%]">
+              <SkillsSection skillsData={skillsData} />
+              </div>
+            </section>
 
-          <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%] ">
-          <section id="experience">
-            <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
-            <ExperienceSection experienceData={experienceData} />
-          </section>
-          </div>
-
+            <section id="experience">
+              <Divider className="mx-auto my-6 w-[80%] border-t-3! border-[#22231A]/90" />
+              <div className="timeline-view animate-zoom-in animate-range-[entry_0%_cover_30%]">
+              <ExperienceSection experienceData={experienceData} />
+              </div>
+            </section>
 
           <div className="mt-6 flex justify-end">
             <a
@@ -86,7 +87,6 @@ export default function Home() {
               <FaGithub size={22} />
             </a>
           </div>
-
         </div>
       </main>
 
