@@ -6,10 +6,10 @@ export const activitiesData: ActivitiesDataType[] = [
     activityDescription:
       "อบรมด้านตลาดงาน IT, การจัดทำ Resume, LinkedIn, การสมัครงาน และการสัมภาษณ์งาน",
     activityImage: [
-      "/images/activities/JobApplications.png",
+      "/images/activities/JobApplicationsCertificate.png",
     ],
-    activityStartDate: new Date("2024-11-4"),
-    activityEndDate: new Date("2024-11-06"),
+    activityStartDate: new Date("2024-11-3"),
+    activityEndDate: new Date("2024-11-13"),
   },
   {
     activityName: "พี่สอนน้อง(สหกิจศึกษา)",
