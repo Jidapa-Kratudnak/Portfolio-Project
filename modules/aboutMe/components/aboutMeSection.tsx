@@ -63,7 +63,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                 },
               }}
             >
-              <div className="w-full space-y-5 p-2 sm:p-4 xl:p-6">
+              <div className="w-full space-y-5 p-2 sm:p-4 xl:p-1">
                 <div className="flex items-start gap-3">
                   <UserRound size={21} className="mt-1 shrink-0" />
 
@@ -72,7 +72,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                       ชื่อ-นามสกุล
                     </span>
 
-                    <span className="wrap-break-word sm:font-medium xl:text-lg">
+                    <span className="wrap-break-word sm:font-normal xl:text-lg">
                       {aboutMeData.THfirstName} {aboutMeData.THlastName}
                     </span>
                   </div>
@@ -86,7 +86,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                       เบอร์โทรศัพท์
                     </span>
 
-                    <span className="wrap-break-word sm:font-medium xl:text-lg">
+                    <span className="wrap-break-word sm:font-normal xl:text-lg">
                       {aboutMeData.phone}
                     </span>
                   </div>
@@ -100,7 +100,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                       E-mail
                     </span>
 
-                    <span className="break-all sm:font-medium xl:text-lg">
+                    <span className="break-all sm:font-normal xl:text-lg">
                       {aboutMeData.email}
                     </span>
                   </div>
@@ -114,7 +114,7 @@ const AboutMeSection = ({ aboutMeData }: AboutMeProps) => {
                       ที่อยู่
                     </span>
 
-                    <span className="wrap-break-word sm:font-medium xl:text-lg">
+                    <span className="wrap-break-word sm:font-normal xl:text-lg">
                       {aboutMeData.address}
                     </span>
                   </div>

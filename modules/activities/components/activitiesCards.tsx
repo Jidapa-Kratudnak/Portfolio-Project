@@ -22,9 +22,9 @@ const thaiMonths = [
 const formatThaiDate = (value: Date) => {
   const date = new Date(value);
 
-  return `${date.getUTCDate()} ${
-    thaiMonths[date.getUTCMonth()]
-  } ${date.getUTCFullYear() + 543}`;
+  return `${date.getDate()} ${
+    thaiMonths[date.getMonth()]
+  } ${date.getFullYear() + 543}`;
 };
 
 type ActivitiesCardsProps = {
